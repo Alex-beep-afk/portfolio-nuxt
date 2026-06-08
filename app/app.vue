@@ -23,10 +23,10 @@
         <div class="flex gap-5">
 
           <button
-            class="bg-white p-5 font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-500 ease-in-out">Voir
+            class="bg-white p-5 font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-500 ease-in-out ">Voir
             mes projets</button>
           <button
-            class="bg-black p-5 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10 transition-all duration-500 ease-in-out">Me
+            class="bg-black p-5 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10 transition-all duration-500 ease-in-out ">Me
             contacter</button>
 
         </div>
@@ -49,8 +49,7 @@
         </div>
 
         <div class="text-blue-500 font-bold text-xl md:flex md:items-end md:p-5">
-          <a class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out underline-offset-4 hover:underline"
-            href="#">Voir tous mes projets -> </a>
+          <AnimatedLink to="#">Voir tous mes projets --> </AnimatedLink>
         </div>
       </div>
 

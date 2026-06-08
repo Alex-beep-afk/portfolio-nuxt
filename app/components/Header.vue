@@ -13,15 +13,12 @@
                 d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1m0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1M3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1" />
         </svg>
 
-        <ul class="text-white gap-16 hidden md:flex">
-            <li class="cursor-pointer hover:text-blue-500 transition-all duration-500 ease-in-out group"><a class="relative" href="#">Accueil <div class="w-0 h-[2px] absolute -bottom-2 left-1/2 -translate-x-1/2 group-hover:w-full transition-all duration-500 ease-in-out bg-blue-500"></div></a>
-            </li>
-            <li class="cursor-pointer hover:text-blue-500 transition-all duration-500 ease-in-out group"><a class="relative" href="#">A propos <div class="w-0 h-[2px] absolute -bottom-2 left-1/2 -translate-x-1/2 group-hover:w-full transition-all duration-500 ease-in-out bg-blue-500"></div></a>
-            </li>
-            <li class="cursor-pointer hover:text-blue-500 transition-all duration-500 ease-in-out group"><a class="relative" href="#">Stack <div class="w-0 h-[2px] absolute -bottom-2 left-1/2 -translate-x-1/2 group-hover:w-full transition-all duration-500 ease-in-out bg-blue-500"></div></a>
-            </li>
-            <li class="cursor-pointer hover:text-blue-500 transition-all duration-500 ease-in-out group"><a class="relative" href="#">Contact <div class="w-0 h-[2px] absolute -bottom-2 left-1/2 -translate-x-1/2 group-hover:w-full transition-all duration-500 ease-in-out bg-blue-500"></div></a>
-            </li>
-        </ul>
+        <nav class="text-white gap-16 hidden md:flex">
+            <AnimatedLink to="#">Projets</AnimatedLink>
+            <AnimatedLink to="#">A propos</AnimatedLink>
+            <AnimatedLink to="#">Stack</AnimatedLink>
+            <AnimatedLink to="#">Contact</AnimatedLink>
+            
+        </nav>
     </header>
 </template>
