@@ -38,7 +38,7 @@
     <section class="p-16 bg-gray-800 min-h-screen flex flex-col gap-16">
       <div class="flex justify-between h-1/6">
         <div class="flex flex-col gap-4">
-          <h2 class="text-white text-5xl font-bold">Mon travail</h2>
+          <h2 class="text-white text-5xl font-bold">Mon travail Hello</h2>
           <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
             professionnelles.</p>
         </div>
