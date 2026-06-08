@@ -1,7 +1,7 @@
 <template>
    <div class="w-full h-full flex flex-col gap-5 ">
           <div class="overflow-hidden w-full h-96 border border-slate-400/50 hover:border-blue-500 rounded-3xl ">
-            <img class="w-full object-cover hover:scale-110 transition-all duration-500 ease-in-out object-center origin-center"
+            <img class="w-full h-full object-cover hover:scale-110 transition-all duration-500 ease-in-out object-center origin-center"
               src="/medias/images/image3.webp" :alt="'image du projet' + title">
           </div>
           <h3 class="text-white text-5xl font-bold">{{ title }}</h3>

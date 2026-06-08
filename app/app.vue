@@ -1,18 +1,19 @@
 <template>
+  <Header/>
   <main class="min-h-screen bg-gradient-to-r from-black from-[20%] via-black via-[50%] to-transparent">
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover -z-10 ">
+    <video autoplay loop muted playsinline class="absolute w-full h-full object-cover -z-10 ">
 
       <source src="/medias/backgroundFolio.mp4" type="video/mp4">
     </video>
 
 
-    <section class="px-16 h-screen">
-      <div class="w-3/5 flex flex-col gap-10 justify-center h-full">
+    <section class="p-16 h-screen">
+      <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
         <p class="text-blue-500 font-bold">// Hello World ! </p>
-        <h1 class="text-7xl font-bold text-white ">Création <span class="text-blue-500">d'experiences</span> digitales
+        <h1 class="xl:text-7xl text-center text-lg font-bold text-white ">Création <span class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
-        <p class="text-blue-300 font-semibold text-lg">Je suis devellopeur junior spécialisé en développement web et
+        <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en développement web et
           mobile. Passionné par les
           nouvelles technologies et l'innovation, je cherche constamment à repousser les limites de ce qui est
           possible.
@@ -35,27 +36,32 @@
 
     </section>
 
-    <section class="p-16 bg-gray-800 min-h-screen flex flex-col gap-16">
-      <div class="flex justify-between h-1/6">
+    <section class="p-16 bg-gray-800 min-h-screen flex flex-col gap-16 relative ">
+
+      <div class="h-16 bg-gradient-to-b from-transparent to-gray-800 w-full absolute right-0 -top-16">
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between h-1/6 gap-5">
         <div class="flex flex-col gap-4">
-          <h2 class="text-white text-5xl font-bold">Mon travail Hello</h2>
+          <h2 class="text-white text-5xl font-bold">Mon travail</h2>
           <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
             professionnelles.</p>
         </div>
 
-        <div class="text-blue-500 font-bold text-xl flex items-end p-5">
+        <div class="text-blue-500 font-bold text-xl md:flex md:items-end md:p-5">
           <a class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out underline-offset-4 hover:underline"
             href="#">Voir tous mes projets -> </a>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 grid-rows-2 gap-12 w-full h-2/3 ">
+      <div class="grid grid-cols-1 grid-rows-auto md:grid-cols-2 md:grid-rows-2 gap-20 md:gap-12 w-full h-2/3 ">
         
         <ProjectCard v-for="project in displayProjects" :key="project.title" :title="project.title" :description="project.description" :technologies="project.technologies" :link="project.link" />
 
       </div>
 
-
+      <div class="h-16 bg-gradient-to-t from-transparent to-gray-800 w-full absolute right-0 -bottom-16">
+      </div>
     </section>
 
     <section class="bg-black border-y border-slate-400/30 p-16 flex flex-col gap-16">
@@ -65,7 +71,7 @@
           professionnelles.</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:px-16">
         <div v-for="tech in techStack" :key="tech.id" class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
           <div class="border border-slate-400/50 bg-slate-900 rounded-2xl p-4">
             <img :src="tech.logo" :alt="tech.name" class="w-24 h-24 object-contain ">
@@ -75,17 +81,17 @@
       </div>
     </section>
 
-    <section class="flex justify-between p-32 bg-black border-b border-slate-400/30">
+    <section class="flex flex-col justify-between p-16 bg-black border-b border-slate-400/30 gap-10 md:py-32">
       <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
-      <div class="flex flex-col gap-4 w-1/2">
+      <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-white font-semibold text-xl">Actuellement en reconversion professionnelle, je suis à la recherche d'une alternance pour mettre en pratique mes compétences et acquérir de nouvelles connaissances.</p>
         <p class="text-blue-300 font-semibold italic text-lg">"La créativité c'est l'intelligence qui s'amuse " - Albert Einstein</p>
       </div>
 
     </section>
 
-    <section class="flex justify-between p-32 bg-black border-b border-slate-400/30">
-      <div class="flex flex-col gap-4 w-1/2">
+    <section class="flex flex-col md:flex-row justify-between p-16 md:py-32 bg-black border-b border-slate-400/30 gap-10">
+      <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
         <p class="text-white font-semibold text-5xl">Travaillons ensemble !</p>
         
@@ -101,6 +107,7 @@
 
     </section>
   </main>
+  <Footer/>
 
 </template>
 
