@@ -1,9 +1,13 @@
 <template>
 
     <header
-        class="sticky top-0 left-0 right-0 w-full flex justify-between items-center px-16 bg-black z-50 h-24 border-b border-slate-400/30 shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
-        <div>
-            <p class="text-white font-bold">Alexandre Prigent</p>
+        class="sticky top-0 left-0 right-0 
+        w-full flex justify-between items-center 
+        px-8 lg:px-16 bg-black z-50 h-24 border-b border-slate-400/30 
+        shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
+        <div class="flex items-center">
+            <img src="/medias/images/logo.png" alt="logo" class="h-24 filter brightness-0 invert">
+            <p class="text-white font-bold text-3xl">AP Web</p>
         </div>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
@@ -15,9 +19,9 @@
 
         <nav class="text-white gap-16 hidden md:flex">
             <AnimatedLink to="#">Projets</AnimatedLink>
-            <AnimatedLink to="#">A propos</AnimatedLink>
             <AnimatedLink to="#">Stack</AnimatedLink>
             <AnimatedLink to="#">Contact</AnimatedLink>
+            <AnimatedLink to="#">A propos</AnimatedLink>
             
         </nav>
     </header>

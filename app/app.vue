@@ -7,10 +7,10 @@
     </video>
 
 
-    <section class="p-16 h-screen">
+    <section class="px-8 py-16 lg:p-16 h-screen">
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
-        <p class="text-blue-500 font-bold">// Hello World ! </p>
+        <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200"/>
         <h1 class="xl:text-7xl text-center text-lg font-bold text-white ">Création <span class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
         <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en développement web et
@@ -32,11 +32,9 @@
         </div>
 
       </div>
-
-
     </section>
 
-    <section class="p-16 bg-gray-800 min-h-screen flex flex-col gap-16 relative ">
+    <section class="px-8 py-16 lg:p-16 bg-gray-800 min-h-screen flex flex-col gap-16 relative">
 
       <div class="h-16 bg-gradient-to-b from-transparent to-gray-800 w-full absolute right-0 -top-16">
       </div>
@@ -53,7 +51,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 grid-rows-auto md:grid-cols-2 md:grid-rows-2 gap-20 md:gap-12 w-full h-2/3 ">
+      <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full h-2/3 ">
         
         <ProjectCard v-for="project in displayProjects" :key="project.title" :title="project.title" :description="project.description" :technologies="project.technologies" :link="project.link" />
 
@@ -63,14 +61,14 @@
       </div>
     </section>
 
-    <section class="bg-black border-y border-slate-400/30 p-16 flex flex-col gap-16">
+    <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16">
       <div class="flex flex-col gap-4">
         <h2 class="text-white text-5xl font-bold">Ma stack</h2>
         <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
           professionnelles.</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
         <div v-for="tech in techStack" :key="tech.id" class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
           <div class="border border-slate-400/50 bg-slate-900 rounded-2xl p-4">
             <img :src="tech.logo" :alt="tech.name" class="w-24 h-24 object-contain ">
@@ -80,7 +78,7 @@
       </div>
     </section>
 
-    <section class="flex flex-col justify-between p-16 bg-black border-b border-slate-400/30 gap-10 md:py-32">
+    <section class="flex flex-col justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
       <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-white font-semibold text-xl">Actuellement en reconversion professionnelle, je suis à la recherche d'une alternance pour mettre en pratique mes compétences et acquérir de nouvelles connaissances.</p>
@@ -89,7 +87,7 @@
 
     </section>
 
-    <section class="flex flex-col md:flex-row justify-between p-16 md:py-32 bg-black border-b border-slate-400/30 gap-10">
+    <section class="flex flex-col md:flex-row justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
         <p class="text-white font-semibold text-5xl">Travaillons ensemble !</p>
