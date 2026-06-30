@@ -5,8 +5,7 @@
   hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] 
   transition-all duration-500 ease-in-out">
 
-    <div class="absolute inset-0 
-      bg-[url(/medias/images/image5.webp)] 
+    <div :style="{backgroundImage: image ? `url(http://127.0.0.1:8000${image})` : 'none'}" class="absolute inset-0 
       bg-cover bg-center bg-no-repeat 
       transition-all duration-700 ease-in-out filter grayscale group-hover:grayscale-0 group-hover:scale-110 z-0
       "></div>
@@ -28,8 +27,8 @@
       <ul class="flex flex-wrap gap-5">
         <li class="text-blue-500 
         font-bold text-xl border border-slate-400/50 
-        rounded-full px-5 py-2 bg-black" v-for="tech in technologies" :key="tech.id">
-          {{ tech }}
+        rounded-full px-5 py-2 bg-black" v-for="tech in techno" :key="tech.id" :title="tech.title">
+          {{ tech.title }}
         </li>
       </ul>
       <AnimatedLink :to="link" class="font-bold text-lg hover:scale-105">Voir le projet --> </AnimatedLink>
@@ -39,12 +38,14 @@
 </template>
 
 <script setup>
+
 // defineProps est la fonction qui permet de dire : 
 // "Ce composant s'attend à recevoir ces données de l'extérieur"
 defineProps({
   title: String,
   description: String,
-  technologies: Array,
-  link: String
+  techno: Array,
+  link: String,
+  image: String
 })
 </script>
