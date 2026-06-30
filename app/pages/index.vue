@@ -99,10 +99,11 @@ const displayTechs = computed(() => {
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
-        <pre><div class="bg-white text-black">{{displayTechs}}</div></pre>
+        
         <div v-for="tech in displayTechs" :key="tech.id" class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
           <div class="border border-slate-400/50 bg-slate-900 rounded-2xl p-4">
-            <img :src="tech.logo" :alt="tech.title" class="w-24 h-24 object-contain ">
+            
+            <img v-if="tech.logo" :src="`http://127.0.0.1:8000/${tech.logo.contentUrl}`" :alt="tech.title" class="w-24 h-24 object-contain ">
           </div>
           <h3 class="text-white text-lg font-bold">{{ tech.title }}</h3>
         </div>
