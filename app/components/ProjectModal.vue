@@ -33,19 +33,41 @@
                         <div class="flex justify-between mb-8 mt-8 items-center">
                             <h3 class="text-white font-semibold text-xl">Galerie</h3>
                             <div class="flex justify-between gap-4">
-                                <button class="text-black text-sm bg-white rounded-md w-8 h-8">
-                                    <-- 
+                                <button @click="slidePrev" :disabled="translateXgallery === 0" class="text-black text-sm bg-white rounded-sm w-8 h-8 flex justify-center items-center 
+                                    hover:bg-blue-500 hover:text-white transition-all duration-500 ease-in-out 
+                                    disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5"
+                                            d="m18.64 19l-5.763-5.763a1.737 1.737 0 0 1 0-2.474L18.64 5m-7 14l-5.763-5.763a1.74 1.74 0 0 1 0-2.474L11.64 5" />
+                                    </svg>
+
                                 </button>
-                                <button class="text-black text-sm bg-white rounded-md w-8 h-8">
-                                    -->
+
+                                <button @click="slideNext" :disabled="translateXgallery <= maxTranslateX" class="text-black text-sm bg-white rounded-sm w-8 h-8 flex justify-center items-center hover:bg-blue-500 hover:text-white transition-all duration-500 ease-in-out
+                                disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5"
+                                            d="m5.36 19l5.763-5.763a1.74 1.74 0 0 0 0-2.474L5.36 5m7 14l5.763-5.763a1.74 1.74 0 0 0 0-2.474L12.36 5" />
+                                    </svg>
+
                                 </button>
                             </div>
 
                         </div>
-                        <div class="flex gap-4 overflow-x-hidden">
-                            <div class="min-w-[240px] h-[160px] cursor-pointer overflow-hidden" v-for="image in project.gallery" :key="image.id">
-                                <img :src="`${$config.public.apiBaseUrl}${image.contentUrl}`" :alt="image.title"
-                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                        <div class="overflow-hidden p-10 -m10 w-full">
+
+                            <div class="flex gap-4 transition-transform duration-500 ease-in-out" :style="{transform: `translateX(${translateXgallery}px)`}">
+                                <div class="min-w-[240px] h-[160px] cursor-pointer  hover:scale-[1.3] relative z-10 hover:z-50 transition-all duration-500"
+                                    v-for="image in project.gallery" :key="image.id">
+                                    <img :src="`${$config.public.apiBaseUrl}${image.contentUrl}`" :alt="image.title"
+                                        class="w-full h-full object-cover grayscale hover:grayscale-0 rounded-lg shadow-lg">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,7 +81,7 @@
 
 <script setup>
 // La modale a besoin de savoir quel projet afficher
-defineProps({
+const props = defineProps({
     project: {
         type: Object,
         required: true
@@ -68,4 +90,21 @@ defineProps({
 
 // La modale a besoin de pouvoir dire "ferme-moi"
 defineEmits(['close'])
+
+const translateXgallery = ref(0);
+
+const slideWidth = 256;
+
+const slideNext = () => {
+    translateXgallery.value -= slideWidth;
+}
+
+const slidePrev = () => {
+    translateXgallery.value += slideWidth;
+}
+
+const maxTranslateX = computed(() => {
+    return -(props.project.gallery?.length - 1) * slideWidth;
+});
+
 </script>
