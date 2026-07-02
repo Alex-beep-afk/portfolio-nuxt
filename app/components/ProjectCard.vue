@@ -1,11 +1,26 @@
+<script setup>
+// defineProps est la fonction qui permet de dire : 
+// "Ce composant s'attend à recevoir ces données de l'extérieur"
+defineProps({
+  title: String,
+  description: String,
+  techno: Array,
+  link: String,
+  image: String
+})
+
+const emit = defineEmits(['showProject'])
+</script>
+
+
 <template>
-  <div class="group w-full h-full 
-  flex flex-col gap-5 border border-slate-400/50 
+  <div @click="emit('showProject')" class="group w-full cursor-pointer h-full 
+  flex flex-col justify-between gap-5 border border-slate-400/50 
   rounded-3xl overflow-hidden relative hover:border-blue-500
   hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] 
   transition-all duration-500 ease-in-out">
 
-    <div :style="{backgroundImage: image ? `url(http://127.0.0.1:8000${image})` : 'none'}" class="absolute inset-0 
+    <div :style="{backgroundImage: image ? `url(${$config.public.apiBaseUrl}${image})` : 'none'}" class="absolute inset-0 
       bg-cover bg-center bg-no-repeat 
       transition-all duration-700 ease-in-out filter grayscale group-hover:grayscale-0 group-hover:scale-110 z-0
       "></div>
@@ -31,21 +46,7 @@
           {{ tech.title }}
         </li>
       </ul>
-      <AnimatedLink :to="link" class="font-bold text-lg hover:scale-105">Voir le projet --> </AnimatedLink>
     </div>
 
   </div>
 </template>
-
-<script setup>
-
-// defineProps est la fonction qui permet de dire : 
-// "Ce composant s'attend à recevoir ces données de l'extérieur"
-defineProps({
-  title: String,
-  description: String,
-  techno: Array,
-  link: String,
-  image: String
-})
-</script>

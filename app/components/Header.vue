@@ -20,7 +20,6 @@
         <nav class="text-white gap-16 hidden md:flex">
             <AnimatedLink to="#">Projets</AnimatedLink>
             <AnimatedLink to="#">Stack</AnimatedLink>
-            <AnimatedLink to="#">Contact</AnimatedLink>
             <AnimatedLink to="#">A propos</AnimatedLink>
             
         </nav>

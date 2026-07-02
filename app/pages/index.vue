@@ -1,13 +1,16 @@
 <script setup>
+
+const config = useRuntimeConfig()
+
 // useFetch est la fonction de Nuxt pour appeler une API
-const { data, error } = await useFetch('https://127.0.0.1:8000/api/projects', {
+const { data, error } = await useFetch(`${config.public.apiBaseUrl}/api/projects`, {
   server: false,
   headers: {
     Accept: 'application/ld+json' // On demande le format API Platform
   }
 })
 
-const {data: techData, error: techError} = await useFetch('https://127.0.0.1:8000/api/technos', {
+const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos`, {
   server: false,
   headers: {
     Accept: 'application/ld+json' // On demande le format API Platform
@@ -15,12 +18,21 @@ const {data: techData, error: techError} = await useFetch('https://127.0.0.1:800
 })
 
 const displayProjects = computed(() => {
-    return data.value ? data.value.member : [] 
+  return data.value ? data.value.member : []
 })
 
 const displayTechs = computed(() => {
-    return techData.value ? techData.value.member : []
+  return techData.value ? techData.value.member : []
 })
+
+const isModalOpen = ref(false)
+
+const selectedProject = ref(null)
+
+const openModalProject = (project) => {
+  selectedProject.value = project
+  isModalOpen.value = true
+}
 
 
 
@@ -29,7 +41,7 @@ const displayTechs = computed(() => {
 <template>
 
 
-  <Header/>
+  <Header />
   <main class="min-h-screen bg-gradient-to-r from-black from-[20%] via-black via-[50%] to-transparent">
     <video autoplay loop muted playsinline class="absolute w-full h-full object-cover -z-10 ">
 
@@ -40,10 +52,12 @@ const displayTechs = computed(() => {
     <section class="px-8 py-16 lg:p-16 h-screen">
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
-        <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200"/>
-        <h1 class="xl:text-7xl text-center text-lg font-bold text-white ">Création <span class="text-blue-500">d'experiences</span> digitales
+        <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200" />
+        <h1 class="xl:text-7xl text-center text-lg font-bold text-white ">Création <span
+            class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
-        <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en développement web et
+        <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en
+          développement web et
           mobile. Passionné par les
           nouvelles technologies et l'innovation, je cherche constamment à repousser les limites de ce qui est
           possible.
@@ -82,8 +96,10 @@ const displayTechs = computed(() => {
       </div>
 
       <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full h-2/3 ">
-        
-        <ProjectCard v-for="project in displayProjects" :key="project.id" :title="project.title" :description="project.description" :techno="project.techno" :link="project.link" :image="project.coverImage?.contentUrl"/>
+
+        <ProjectCard @showProject="openModalProject(project)" v-for="project in displayProjects" :key="project.id"
+          :title="project.title" :description="project.description" :techno="project.techno" :link="project.link"
+          :image="project.coverImage?.contentUrl" />
 
       </div>
 
@@ -99,43 +115,54 @@ const displayTechs = computed(() => {
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
-        
-        <div v-for="tech in displayTechs" :key="tech.id" class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
-          <div class="border border-slate-400/50 bg-slate-900 rounded-2xl p-4">
-            
-            <img v-if="tech.logo" :src="`http://127.0.0.1:8000/${tech.logo.contentUrl}`" :alt="tech.title" class="w-24 h-24 object-contain ">
+
+        <div v-for="tech in displayTechs" :key="tech.id"
+          class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
+          <div class="border border-slate-400/50 bg-slate-900 rounded-2xl w-24 h-24">
+
+            <img v-if="tech.logo" :src="`${config.public.apiBaseUrl}${tech.logo.contentUrl}`" :alt="tech.title"
+              class=" object-cover rounded-2xl">
           </div>
-          <h3 class="text-white text-lg font-bold">{{ tech.title }}</h3>
+          <h3 class="text-white  text-lg font-bold">{{ tech.title }}</h3>
         </div>
       </div>
     </section>
 
-    <section class="flex flex-col justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+    <section
+      class="flex flex-col justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
       <div class="flex flex-col gap-4 w-full md:w-1/2">
-        <p class="text-white font-semibold text-xl">Actuellement en reconversion professionnelle, je suis à la recherche d'une alternance pour mettre en pratique mes compétences et acquérir de nouvelles connaissances.</p>
-        <p class="text-blue-300 font-semibold italic text-lg">"La créativité c'est l'intelligence qui s'amuse " - Albert Einstein</p>
+        <p class="text-white font-semibold text-xl">Actuellement en reconversion professionnelle, je suis à la recherche
+          d'une alternance pour mettre en pratique mes compétences et acquérir de nouvelles connaissances.</p>
+        <p class="text-blue-300 font-semibold italic text-lg">"La créativité c'est l'intelligence qui s'amuse " - Albert
+          Einstein</p>
       </div>
 
     </section>
 
-    <section class="flex flex-col md:flex-row justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+    <section
+      class="flex flex-col md:flex-row justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
         <p class="text-white font-semibold text-5xl">Travaillons ensemble !</p>
-        
+
       </div>
 
       <div class="flex flex-col gap-4 justify-center items-start">
         <p class="text-white font-semibold text-xl">Alexandre.prigent@proton.me</p>
         <ul class="text-blue-300 font-semibold flex gap-4 ">
-          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a href="https://github.com/EwanB22">GitHub</a></li>
-          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a href="https://linkedin.com">LinkedIn</a></li>
+          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a
+              href="https://github.com/EwanB22">GitHub</a></li>
+          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a
+              href="https://linkedin.com">LinkedIn</a></li>
         </ul>
       </div>
 
     </section>
   </main>
-  <Footer/>
+  <!-- On n'affiche la modale QUE si isModalOpen est vrai -->
+  <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="isModalOpen = false" />
+
+  <Footer />
 
 </template>
