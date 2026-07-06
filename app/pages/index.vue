@@ -121,11 +121,11 @@ const openModalProject = (project) => {
     </section>
 
     <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16">
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
         <ScrollReveal>
           <TerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
         </ScrollReveal>
-        <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
+        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Decouvrez mes differents projets et mes experiences
           professionnelles.</p>
       </div>
 
