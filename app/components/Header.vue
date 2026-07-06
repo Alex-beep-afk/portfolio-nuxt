@@ -7,7 +7,7 @@
         shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
         <div class="flex items-center">
             <img src="/medias/images/logo.png" alt="logo" class="h-24 filter brightness-0 invert">
-            <p class="text-white font-bold text-3xl">AP Web</p>
+            <p class="text-white font-bold text-3xl font-heading">Alexandre Prigent</p>
         </div>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
@@ -19,7 +19,6 @@
 
         <nav class="text-white gap-16 hidden md:flex">
             <AnimatedLink to="#">Projets</AnimatedLink>
-            <AnimatedLink to="#">Stack</AnimatedLink>
             <AnimatedLink to="#">A propos</AnimatedLink>
             
         </nav>

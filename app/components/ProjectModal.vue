@@ -16,14 +16,14 @@
                 <!-- Description du projet -->
                 <div class="p-8">
                     <div>
-                        <h2 class="text-3xl text-white font-bold mb-4">{{ project.title }}</h2>
+                        <h3 class="text-3xl text-white font-bold mb-4">{{ project.title }}</h3>
                         <p class="text-blue-300">{{ project.description }}</p>
                     </div>
 
                     <div class=" border border-slate-400/30 mb-10 mt-10"></div>
 
                     <!-- Difficultés rencontrées -->
-                    <h3>Difficultés rencontrées</h3>
+                    <h3 class="text-3xl text-white font-bold mb-4">Difficultés rencontrées</h3>
                     <p class="text-blue-300">
                         {{ project.difficulties }}
 

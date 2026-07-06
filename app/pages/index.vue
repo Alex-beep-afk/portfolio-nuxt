@@ -34,13 +34,9 @@ const openModalProject = (project) => {
   isModalOpen.value = true
 }
 
-
-
 </script>
 
 <template>
-
-
   <Header />
   <main class="min-h-screen bg-gradient-to-r from-black from-[20%] via-black via-[50%] to-transparent">
     <video autoplay loop muted playsinline class="absolute w-full h-full object-cover -z-10 ">
@@ -52,8 +48,11 @@ const openModalProject = (project) => {
     <section class="px-8 py-16 lg:p-16 h-screen">
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
-        <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200" />
-        <h1 class="xl:text-7xl text-center text-lg font-bold text-white ">Création <span
+        <ScrollReveal>
+          <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200" :size="24" />
+        </ScrollReveal>
+
+        <h1 class="xl:text-7xl text-center text-lg font-bold text-white font-heading">Création <span
             class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
         <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en
@@ -67,10 +66,16 @@ const openModalProject = (project) => {
         <div class="flex gap-5">
 
           <button
-            class="bg-white p-5 font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-500 ease-in-out ">Voir
-            mes projets</button>
-          <button
-            class="bg-black p-5 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10 transition-all duration-500 ease-in-out ">Me
+            class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
+            <span
+              class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+
+            <span class="relative z-10">Voir mes projets</span>
+
+          </button>
+
+          <button class="bg-black p-5 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10
+          transition-colors duration-500 ease-in-out ">Me
             contacter</button>
 
         </div>
@@ -78,24 +83,32 @@ const openModalProject = (project) => {
       </div>
     </section>
 
-    <section class="px-8 py-16 lg:p-16 bg-gray-800 min-h-screen flex flex-col gap-16 relative">
+    <section class="px-8 py-16 lg:p-16 bg-gray-800 flex flex-col gap-16 relative">
 
       <div class="h-16 bg-gradient-to-b from-transparent to-gray-800 w-full absolute right-0 -top-16">
       </div>
 
-      <div class="flex flex-col md:flex-row justify-between h-1/6 gap-5">
-        <div class="flex flex-col gap-4">
-          <h2 class="text-white text-5xl font-bold">Mon travail</h2>
-          <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
+      <div class="flex flex-col md:flex-row md:justify-between md:items-start h-1/6 gap-5">
+        <div class="flex flex-col justify-center items-center md:items-start gap-4 min-h-[120px]">
+
+          <ScrollReveal>
+            <TerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
+          </ScrollReveal>
+
+          <p class="text-blue-300 font-semibold text-lg text-center md:text-start">Decouvrez mes differents projets et
+            mes experiences
             professionnelles.</p>
         </div>
 
-        <div class="text-blue-500 font-bold text-xl md:flex md:items-end md:p-5">
-          <AnimatedLink to="#">Voir tous mes projets --> </AnimatedLink>
-        </div>
+        <button
+          class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
+          <span
+            class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+          <span class="relative z-10">Voir tout mes projets</span>
+        </button>
       </div>
 
-      <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full h-2/3 ">
+      <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full">
 
         <ProjectCard @showProject="openModalProject(project)" v-for="project in displayProjects" :key="project.id"
           :title="project.title" :description="project.description" :techno="project.techno" :link="project.link"
@@ -109,7 +122,9 @@ const openModalProject = (project) => {
 
     <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16">
       <div class="flex flex-col gap-4">
-        <h2 class="text-white text-5xl font-bold">Ma stack</h2>
+        <ScrollReveal>
+          <TerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
+        </ScrollReveal>
         <p class="text-blue-300 font-semibold text-lg">Decouvrez mes differents projets et mes experiences
           professionnelles.</p>
       </div>
@@ -160,7 +175,7 @@ const openModalProject = (project) => {
 
     </section>
   </main>
-  <!-- On n'affiche la modale QUE si isModalOpen est vrai -->
+
   <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="isModalOpen = false" />
 
   <Footer />
