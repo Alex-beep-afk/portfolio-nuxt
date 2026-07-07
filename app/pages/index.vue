@@ -29,15 +29,28 @@ const isModalOpen = ref(false)
 
 const selectedProject = ref(null)
 
+const isLocked = useScrollLock(typeof document !== 'undefined' ? document.body : null)
+
 const openModalProject = (project) => {
   selectedProject.value = project
   isModalOpen.value = true
+  isLocked.value = true
 }
+
+const closeModalProject = () => {
+  isModalOpen.value = false
+  isLocked.value = false
+}
+
+// 
+const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null)
+
+
+
 
 </script>
 
 <template>
-  <Header />
   <main class="min-h-screen bg-gradient-to-r from-black from-[20%] via-black via-[50%] to-transparent">
     <video autoplay loop muted playsinline class="absolute w-full h-full object-cover -z-10 ">
 
@@ -48,9 +61,9 @@ const openModalProject = (project) => {
     <section class="px-8 py-16 lg:p-16 h-screen">
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
-        <ScrollReveal>
-          <TerminalText text="// Bienvenue sur mon portfolio !" :speed="200" :size="24" />
-        </ScrollReveal>
+        <UiScrollReveal>
+          <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="200" :size="24" />
+        </UiScrollReveal>
 
         <h1 class="xl:text-7xl text-center text-lg font-bold text-white font-heading">Création <span
             class="text-blue-500">d'experiences</span> digitales
@@ -91,9 +104,9 @@ const openModalProject = (project) => {
       <div class="flex flex-col md:flex-row md:justify-between md:items-start h-1/6 gap-5">
         <div class="flex flex-col justify-center items-center md:items-start gap-4 min-h-[120px]">
 
-          <ScrollReveal>
-            <TerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
-          </ScrollReveal>
+          <UiScrollReveal>
+            <UiTerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
+          </UiScrollReveal>
 
           <p class="text-blue-300 font-semibold text-lg text-center md:text-start">Decouvrez mes differents projets et
             mes experiences
@@ -122,10 +135,11 @@ const openModalProject = (project) => {
 
     <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16">
       <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
-        <ScrollReveal>
-          <TerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
-        </ScrollReveal>
-        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Decouvrez mes differents projets et mes experiences
+        <UiScrollReveal>
+          <UiTerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
+        </UiScrollReveal>
+        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Decouvrez mes differents projets et mes
+          experiences
           professionnelles.</p>
       </div>
 
@@ -174,10 +188,20 @@ const openModalProject = (project) => {
       </div>
 
     </section>
+
+    <div class="sticky bottom-0 z-50 text-blue-500 flex items-center justify-center animate-bounce overflow-hidden transition-all duration-500 ease-in-out "
+      :class="arrivedState.top ? 'max-h-24 p-2 opacity-100' : 'max-h-0 p-0 opacity-0'">
+      <span
+        class="backdrop-blur-sm p-2 rounded-full shadow-[inset_0_0_20px_rgba(59,130,246,0.5)] ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 32 32">
+          <path d="M0 0h32v32H0z" fill="none" />
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+            d="m6 22l10 8l10-8m-10 8V2" />
+        </svg>
+      </span>
+    </div>
   </main>
 
-  <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="isModalOpen = false" />
-
-  <Footer />
+  <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="closeModalProject()" />
 
 </template>

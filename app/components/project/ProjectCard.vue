@@ -20,8 +20,8 @@ const emit = defineEmits(['showProject'])
   hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] 
   transition-all duration-500 ease-in-out ">
 
-    <div :style="{backgroundImage: image ? `url(${$config.public.apiBaseUrl}${image})` : 'none'}" class="absolute inset-0 
-      bg-cover bg-center bg-no-repeat 
+    <div :style="{backgroundImage: image ? `url(${$config.public.apiBaseUrl}${image})` : 'url(/medias/images/bg-default.png)'}" class="absolute inset-0 
+      bg-cover bg-center bg-no-repeat bg-black
       transition-all duration-700 ease-in-out filter grayscale group-hover:grayscale-0 group-hover:scale-110 z-0
       "></div>
 
@@ -36,7 +36,7 @@ const emit = defineEmits(['showProject'])
     <div class="w-full h-48 md:h-96 relative z-20"></div>
 
     <div class="flex flex-col justify-between items-center gap-5 p-8 relative z-20">
-      <h3 class="text-white text-3xl font-bold text-center md:text-left">{{ title  }}</h3>
+      <h3 class="text-blue-500 text-3xl font-bold text-center md:text-left">{{ title  }}</h3>
       <p class="text-blue-300 font-semibold text-lg text-center md:text-left">{{ description.length >= 90 ? description.slice(0, 90) + '...' : description }}</p>
 
       <ul class="flex gap-5">

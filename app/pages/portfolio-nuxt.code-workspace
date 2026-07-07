@@ -1,11 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "../../../../portfolio-api"
-		},
-		{
-			"path": "../.."
-		}
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": "../.."
+        },
+        {
+            "path": "../../../../portfolio-api"
+        }
+    ]
 }

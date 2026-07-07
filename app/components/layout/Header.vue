@@ -18,8 +18,8 @@
         </svg>
 
         <nav class="text-white gap-16 hidden md:flex">
-            <AnimatedLink to="#">Projets</AnimatedLink>
-            <AnimatedLink to="#">A propos</AnimatedLink>
+            <UiAnimatedLink to="#">Projets</UiAnimatedLink>
+            <UiAnimatedLink to="#">A propos</UiAnimatedLink>
             
         </nav>
     </header>

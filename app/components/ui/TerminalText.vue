@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-baseline gap-1" >
         <span class="text-blue-500 font-terminal" :style="width < 768 ? {fontSize: `${size*0.8}px`} : {fontSize: `${size}px`}">{{ displayText }}</span>
-        <span class=" h-px bg-blue-500 animate-pulse" :style="{width: `${size/2}px`}"></span>
+        <span class="h-px bg-blue-500 animate-pulse" :style="{width: `${size/2}px`}"></span>
     </div>
 </template>
 
@@ -23,6 +23,7 @@ const props = defineProps({
         default: 16
     }
 })
+
 const { width, height } = useWindowSize()
 
 const fullText = props.text
