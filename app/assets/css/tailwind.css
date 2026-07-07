@@ -34,3 +34,23 @@
     scrollbar-width: none;
   }
 }
+
+/* --------------- 
+   TRANSITIONS NUXT 
+   --------------- */
+
+/* Le temps que dure l'animation (ex: 0.4 secondes) */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+
+/* L'état "invisible" de la page au tout début et à la toute fin */
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(10px);
+  /* Petit effet de flou très moderne ! */
+  transform: translateY(10px);
+  /* La page descend un peu en disparaissant */
+}

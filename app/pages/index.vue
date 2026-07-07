@@ -1,15 +1,12 @@
 <script setup>
 
 const config = useRuntimeConfig()
+//Appel Api pour les projets
+const {projects, fetchProjects} = useProjects();
+await fetchProjects();
 
-// useFetch est la fonction de Nuxt pour appeler une API
-const { data, error } = await useFetch(`${config.public.apiBaseUrl}/api/projects`, {
-  server: false,
-  headers: {
-    Accept: 'application/ld+json' // On demande le format API Platform
-  }
-})
-
+// Appel Api pour les technos 
+// TODO: transformer le useFetch en composable et utiliser le useTechnos
 const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos`, {
   server: false,
   headers: {
@@ -17,36 +14,20 @@ const { data: techData, error: techError } = await useFetch(`${config.public.api
   }
 })
 
-const displayProjects = computed(() => {
-  return data.value ? data.value.member : []
-})
 
+const displayedProjects = computed(() => {
+  return projects.value.slice(0, 4)
+})
 const displayTechs = computed(() => {
   return techData.value ? techData.value.member : []
 })
 
-const isModalOpen = ref(false)
 
-const selectedProject = ref(null)
 
-const isLocked = useScrollLock(typeof document !== 'undefined' ? document.body : null)
 
-const openModalProject = (project) => {
-  selectedProject.value = project
-  isModalOpen.value = true
-  isLocked.value = true
-}
 
-const closeModalProject = () => {
-  isModalOpen.value = false
-  isLocked.value = false
-}
-
-// 
+// Gestion de la arrowbulle
 const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null)
-
-
-
 
 </script>
 
@@ -121,13 +102,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
         </button>
       </div>
 
-      <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full">
-
-        <ProjectCard @showProject="openModalProject(project)" v-for="project in displayProjects" :key="project.id"
-          :title="project.title" :description="project.description" :techno="project.techno" :link="project.link"
-          :image="project.coverImage?.contentUrl" />
-
-      </div>
+      <SectionGridProjects :projects="displayedProjects" />
 
       <div class="h-16 bg-gradient-to-t from-transparent to-gray-800 w-full absolute right-0 -bottom-16">
       </div>
@@ -202,6 +177,6 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     </div>
   </main>
 
-  <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="closeModalProject()" />
+  
 
 </template>
