@@ -57,20 +57,11 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
           Je suis également un joueur passionné et un amateur de café, deux passions qui influencent mon approche
           créative
           et ma motivation.</p>
-        <div class="flex gap-5">
+        <div class="flex gap-5 items-center">
 
-          <button
-            class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
-            <span
-              class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+          <UiButtonPrimary label="Voir mes projets" to="/projects" />
 
-            <span class="relative z-10">Voir mes projets</span>
-
-          </button>
-
-          <button class="bg-black p-5 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10
-          transition-colors duration-500 ease-in-out ">Me
-            contacter</button>
+          <UiButtonSecondary label="Me contacter" to="/contact" />
 
         </div>
 
