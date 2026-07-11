@@ -43,7 +43,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
         <UiScrollReveal>
-          <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="200" :size="24" />
+          <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="100" :size="24" />
         </UiScrollReveal>
 
         <h1 class="xl:text-7xl text-center text-lg font-bold text-white font-heading">Création <span

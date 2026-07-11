@@ -1,7 +1,7 @@
 <template>
-    <div class="flex items-baseline gap-1" >
-        <span class="text-blue-500 font-terminal" :style="width < 768 ? {fontSize: `${size*0.8}px`} : {fontSize: `${size}px`}">{{ displayText }}</span>
-        <span class="h-px bg-blue-500 animate-pulse" :style="{width: `${size/2}px`}"></span>
+    <div class="flex items-baseline gap-1 justify-center" >
+        <span :class="colorText" class="font-terminal" :style="width < 768 ? {fontSize: `${size*0.8}px`} : {fontSize: `${size}px`}">{{ displayText }}</span>
+        <span :class="colorCursor" class="h-px  animate-pulse" :style="{width: `${size/2}px`}"></span>
     </div>
 </template>
 
@@ -21,6 +21,16 @@ const props = defineProps({
         type: Number,
         required: false,
         default: 16
+    },
+    colorText: {
+        type: String,
+        required: false,
+        default: "text-blue-500"
+    },
+    colorCursor: {
+        type: String,
+        required: false,
+        default: "bg-blue-500"
     }
 })
 
