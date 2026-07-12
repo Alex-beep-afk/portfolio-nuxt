@@ -80,9 +80,7 @@
                     <div>
                         <h3 class="text-white font-semibold text-3xl mb-10">Technologies utilisées</h3>
                         <div class="flex gap-4">
-                            <span v-for="tech in project.techno" :key="tech.id"
-                                class="text-blue-500 font-bold text-xl border border-slate-400/50 rounded-full px-5 py-2 bg-black hover:scale-110 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] hover:border-blue-500 hover:text-white transition-all duration-500 ease-in-out">{{
-                                    tech.title }}</span>
+                            <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
                         </div>
                     </div>
 

@@ -2,7 +2,7 @@
 
 const config = useRuntimeConfig()
 //Appel Api pour les projets
-const {projects, fetchProjects} = useProjects();
+const { projects, fetchProjects } = useProjects();
 await fetchProjects();
 
 // Appel Api pour les technos 
@@ -52,10 +52,10 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
         <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en
           développement web et
           mobile. Passionné par les
-          nouvelles technologies et l'innovation, je cherche constamment à repousser les limites de ce qui est
-          possible.
-          Je suis également un joueur passionné et un amateur de café, deux passions qui influencent mon approche
-          créative
+          nouvelles technologies et l'innovation, je cherche activement une alternance afin de developper mes
+          compétences et
+          contribuer à des projets innovants. Je suis également un joueur passionné et un grand amateur de café, deux passions
+          qui influencent mon approche créative
           et ma motivation.</p>
         <div class="flex gap-5 items-center">
 
@@ -68,12 +68,12 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       </div>
     </section>
 
-    <section class="px-8 py-16 lg:p-16 bg-gray-800 flex flex-col gap-16 relative">
+    <section class="px-8 py-16 lg:p-16 bg-black flex flex-col gap-16 relative mb-16">
 
-      <div class="h-16 bg-gradient-to-b from-transparent to-gray-800 w-full absolute right-0 -top-16">
+      <div class="h-16 bg-gradient-to-b from-transparent to-black w-full absolute right-0 -top-16">
       </div>
 
-      <div class="flex flex-col md:flex-row md:justify-between md:items-start h-1/6 gap-5">
+      <div class="flex flex-col items-center md:flex-row md:justify-between md:items-start h-1/6 gap-5">
         <div class="flex flex-col justify-center items-center md:items-start gap-4 min-h-[120px]">
 
           <UiScrollReveal>
@@ -85,21 +85,16 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
             professionnelles.</p>
         </div>
 
-        <button
-          class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
-          <span
-            class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-          <span class="relative z-10">Voir tout mes projets</span>
-        </button>
+        <UiButtonPrimary label="Voir tout mes projets" to="/projects" />
+
       </div>
 
       <SectionGridProjects :projects="displayedProjects" />
 
-      <div class="h-16 bg-gradient-to-t from-transparent to-gray-800 w-full absolute right-0 -bottom-16">
-      </div>
+      
     </section>
 
-    <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16">
+    <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16 ">
       <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
         <UiScrollReveal>
           <UiTerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
@@ -136,29 +131,23 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     </section>
 
     <section
-      class="flex flex-col md:flex-row justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+      class="flex flex-col md:flex-row justify-between md:items-center px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <div class="flex flex-col gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
-        <p class="text-white font-semibold text-5xl">Travaillons ensemble !</p>
+        <p class="text-white font-semibold text-3xl lg:text-5xl font-heading">Travaillons ensemble !</p>
 
       </div>
 
-      <div class="flex flex-col gap-4 justify-center items-start">
-        <p class="text-white font-semibold text-xl">Alexandre.prigent@proton.me</p>
-        <ul class="text-blue-300 font-semibold flex gap-4 ">
-          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a
-              href="https://github.com/EwanB22">GitHub</a></li>
-          <li class="cursor-pointer hover:text-white transition-all duration-500 ease-in-out"><a
-              href="https://linkedin.com">LinkedIn</a></li>
-        </ul>
+      <div class="">
+        <UiButtonSecondary label="Me contacter" to="/contact" />
       </div>
 
     </section>
 
-    <div class="sticky bottom-0 z-50 text-blue-500 flex items-center justify-center animate-bounce overflow-hidden transition-all duration-500 ease-in-out "
+    <div
+      class="sticky bottom-0 z-50 text-blue-500 flex items-center justify-center animate-bounce overflow-hidden transition-all duration-500 ease-in-out "
       :class="arrivedState.top ? 'max-h-24 p-2 opacity-100' : 'max-h-0 p-0 opacity-0'">
-      <span
-        class="backdrop-blur-sm p-2 rounded-full shadow-[inset_0_0_20px_rgba(59,130,246,0.5)] ">
+      <span class="backdrop-blur-sm p-2 rounded-full shadow-[inset_0_0_20px_rgba(59,130,246,0.5)] ">
         <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 32 32">
           <path d="M0 0h32v32H0z" fill="none" />
           <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -167,7 +156,5 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       </span>
     </div>
   </main>
-
-  
 
 </template>

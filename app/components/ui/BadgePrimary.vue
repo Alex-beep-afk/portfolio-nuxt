@@ -13,7 +13,7 @@ defineProps({
 
 <template>
     <NuxtLink :to="to"
-        class="px-4 py-2 text-sm border border-white/10 text-blue-300/70 rounded-full hover:text-white hover:border-blue-500 hover:bg-white/5 transition-all">
+        class="px-4 py-2 text-sm border border-white/10 text-blue-300/70 rounded-full hover:text-white hover:border-blue-500 hover:bg-white/5 transition-all duration-500 ease-in-out">
         {{ linkText }}
     </NuxtLink>
 </template>
