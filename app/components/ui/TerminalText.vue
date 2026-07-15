@@ -1,8 +1,11 @@
 <template>
-    <div class="flex items-baseline gap-1 justify-center" >
-        <span :class="colorText" class="font-terminal" :style="width < 768 ? {fontSize: `${size*0.8}px`} : {fontSize: `${size}px`}">{{ displayText }}</span>
-        <span :class="colorCursor" class="h-px  animate-pulse" :style="{width: `${size/2}px`}"></span>
+
+    <div :class="colorText" class="font-terminal text-center flex items-baseline gap-1 min-h-[30px]"
+        :style="width < 768 ? { fontSize: `${size * 0.8}px` } : { fontSize: `${size}px` }"> {{ displayText }}
+        <span :class="colorCursor" class="h-px animate-pulse" :style="{ width: `${size / 2}px` }"></span>
     </div>
+
+
 </template>
 
 <script setup>
@@ -45,11 +48,11 @@ const typingSpeed = props.speed
 const isFinished = ref(false)
 
 
-const typeText = () =>{
+const typeText = () => {
     let currentIndex = 0
 
-    const interval = setInterval(()=>{
-        if(currentIndex < fullText.length){
+    const interval = setInterval(() => {
+        if (currentIndex < fullText.length) {
             displayText.value += fullText.charAt(currentIndex)
             currentIndex++
         } else {

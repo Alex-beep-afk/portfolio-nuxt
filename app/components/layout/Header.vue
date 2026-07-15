@@ -19,7 +19,7 @@
 
         <nav class="text-white gap-16 hidden md:flex">
             <UiAnimatedLink to="/projects">Projets</UiAnimatedLink>
-            <UiAnimatedLink to="#">A propos</UiAnimatedLink>
+            <UiAnimatedLink to="/about">A propos</UiAnimatedLink>
             <UiAnimatedLink to="/contact">Contact</UiAnimatedLink>
         </nav>
     </header>
