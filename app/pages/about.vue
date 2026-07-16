@@ -3,29 +3,29 @@
 
 const textSwitcherState = ref(0);
 
-// Ajoutez ces variables et fonctions dans votre <script setup>
+
 let startX = 0;
 
 const onPointerDown = (e) => {
-  // On enregistre la position de départ quand on clique ou touche l'écran
+  
   startX = e.clientX;
 };
 
 const onPointerUp = (e) => {
-  // On récupère la position de fin
+  
   const endX = e.clientX;
-  // On calcule la distance parcourue
+  
   const diffX = startX - endX;
 
-  // On demande un minimum de 50px de mouvement pour éviter qu'un simple clic ne déclenche le changement
+  
   if (Math.abs(diffX) > 50) {
     if (diffX > 0) {
-      // Swipe vers la gauche (on va à l'élément SUIVANT)
+      
       if (textSwitcherState.value < 2) {
         textSwitcherState.value++;
       }
     } else {
-      // Swipe vers la droite (on retourne à l'élément PRÉCÉDENT)
+      
       if (textSwitcherState.value > 0) {
         textSwitcherState.value--;
       }
