@@ -82,3 +82,33 @@
   transform: translateY(10px);
 
 }
+
+/* -----------------------------------
+   TRANSITION "SLIDE" (Text Switcher)
+   ----------------------------------- */
+
+/* 1. L'ANIMATION D'ENTRÉE (Le nouvel élément arrive) */
+.slide-enter-active {
+  /* On lui donne un peu plus de temps pour arriver (400ms) avec une décélération (ease-out) pour qu'il se pose en douceur */
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+/* L'état de départ du nouvel élément (il est invisible et légèrement décalé à droite) */
+.slide-enter-from {
+  opacity: 0;
+  /* Un petit décalage en pixels (ex: 30px ou 50px) est souvent plus élégant que 100% */
+  transform: translateX(30px); 
+}
+
+
+/* 2. L'ANIMATION DE SORTIE (L'ancien élément s'en va) */
+.slide-leave-active {
+  /* On le fait sortir plus vite (250ms) pour nettoyer la vue, avec une accélération (ease-in) */
+  transition: all 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53); 
+}
+
+/* L'état final de l'ancien élément (il disparaît en glissant vers la gauche) */
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px); 
+}

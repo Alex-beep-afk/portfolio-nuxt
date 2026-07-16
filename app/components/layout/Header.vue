@@ -6,7 +6,7 @@
         px-8 lg:px-16 bg-black z-50 h-24 border-b border-slate-400/30 
         shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
         <NuxtLink to="/" class="flex items-center">
-            <img src="/medias/images/logo.png" alt="logo" class="h-24 filter brightness-0 invert">
+            <img src="/medias/images/logo.webp" alt="logo" class="h-24 filter brightness-0 invert">
             <p class="text-white font-bold text-3xl font-heading">Alexandre Prigent</p>
         </NuxtLink>
 

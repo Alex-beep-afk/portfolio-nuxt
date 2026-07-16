@@ -1,5 +1,41 @@
 <script setup>
-import { transition } from '@vueuse/core';
+// Swapper
+
+const textSwitcherState = ref(0);
+
+// Ajoutez ces variables et fonctions dans votre <script setup>
+let startX = 0;
+
+const onPointerDown = (e) => {
+  // On enregistre la position de départ quand on clique ou touche l'écran
+  startX = e.clientX;
+};
+
+const onPointerUp = (e) => {
+  // On récupère la position de fin
+  const endX = e.clientX;
+  // On calcule la distance parcourue
+  const diffX = startX - endX;
+
+  // On demande un minimum de 50px de mouvement pour éviter qu'un simple clic ne déclenche le changement
+  if (Math.abs(diffX) > 50) {
+    if (diffX > 0) {
+      // Swipe vers la gauche (on va à l'élément SUIVANT)
+      if (textSwitcherState.value < 2) {
+        textSwitcherState.value++;
+      }
+    } else {
+      // Swipe vers la droite (on retourne à l'élément PRÉCÉDENT)
+      if (textSwitcherState.value > 0) {
+        textSwitcherState.value--;
+      }
+    }
+  }
+};
+
+
+
+// Frise diplome/expérience
 
 const friseState = ref(null);
 
@@ -99,6 +135,7 @@ const friseData = {
         }
     ]
 }
+
 // Particules
 const particles = ref([]);
 const particleCount = 100;
@@ -145,28 +182,76 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class="min-h-screen gap-8 flex-col flex p-8 bg-scroll bg-center"
+    <main class="min-h-screen gap-8 flex flex-col items-center p-8 bg-scroll bg-center"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%) no-repeat center center fixed' }">
-        <section class="flex flex-col items-center p-8 gap-8 rounded-2xl backdrop-blur-xl border border-slate-400/50 md:flex-row md:p-16 md:items-start ">
+
+        <section class="flex flex-col items-center p-16 gap-8 rounded-2xl 
+            backdrop-blur-xl border border-slate-400/50 overflow-hidden  md:w-1/2 md:p-16  
+            ">
+
             <div class="max-w-[250px] pills-glow-blue rounded-2xl avatar-glow">
                 <img class="max-w-full rounded-2xl" src="/medias/images/Alex.webp" alt="Avatar">
             </div>
-            <div class="text-white">
-                <h2 class="text-2xl font-bold">Infos générales</h2>
-                <div class="w-full h-[1px] bg-white my-4"></div>
-                <ul class="text-lg">
-                    <li>Nom: Prigent</li>
-                    <li>Prénom: Alexandre</li>
-                    <li>Âge: 34 ans</li>
-                    <li>Métier: Développeur web</li>
-                </ul>
+
+            <div class="flex min-h-[250px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y" @pointerdown="onPointerDown"
+                @pointerup="onPointerUp">
+
+                <transition name="slide" mode="out-in">
+                    <div v-if="textSwitcherState === 0" class="flex flex-col items-center justify-center text-white w-full">
+                        <UiTerminalText :text="'Informations Générales'" :size="32" :speed="100" />
+                        <div class="w-full h-[1px] bg-white my-4"></div>
+                        <ul class="text-lg">
+                            <li>Nom: Prigent</li>
+                            <li>Prénom: Alexandre</li>
+                            <li>Âge: 34 ans</li>
+                            <li>Métier: Développeur web</li>
+                        </ul>
+                    </div>
+
+                    <div v-else-if="textSwitcherState === 1"
+                        class="text-white flex flex-col items-center justify-center w-full ">
+                        <UiTerminalText :text="'ToolBox'" :size="32" />
+                        <div class="w-full h-[1px] bg-white my-4"></div>
+                        <ul class="text-lg">
+                            <li>Symfony: ⭐⭐⭐</li>
+                            <li>Vue: ⭐⭐⭐</li>
+                            <li>Nuxt: ⭐⭐</li>
+                            <li>PHP: ⭐⭐⭐</li>
+                            <li>SQL: ⭐⭐</li>
+                            <li>Tailwind: ⭐⭐⭐</li>
+                           
+                        </ul>
+                    </div>
+
+                    <div v-else-if="textSwitcherState === 2"
+                        class="text-white flex flex-col items-center justify-center w-full">
+                        <UiTerminalText :text="'Centres d\'intérêts'" :size="32" :speed="100" />
+                        <div class="w-full h-[1px] bg-white my-4"></div>
+                        <ul class="text-lg">
+                            <li>Escalade</li>
+                            <li>Randonnée</li>
+                            <li>Bricolage</li>
+                            <li>Cuisine</li>
+                        </ul>
+                    </div>
+                </transition>
+
+            </div>
+
+            <div class="flex items-center gap-4">
+                <span @click="textSwitcherState = 0" :class="textSwitcherState === 0 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                    class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
+                <span @click="textSwitcherState = 1" :class="textSwitcherState === 1 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                    class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
+                <span @click="textSwitcherState = 2" :class="textSwitcherState === 2 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                    class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
             </div>
         </section>
         <section class="flex flex-col py-8">
 
-            <h2 class="text-2xl text-center text-white font-bold">Qui suis-je ?</h2>
+            <h2 class="text-2xl text-center text-white font-heading">Qui suis-je ?</h2>
             <div class="w-full h-[1px] bg-white my-4"></div>
-            <p class="text-white">
+            <p class="text-white text-lg text-center">
                 Phasellus tincidunt ligula sed ornare gravida. Sed consectetur sit amet mi quis pretium. Aenean
                 accumsan dignissim erat. Ut non felis ut mi pretium egestas et vitae lectus. Aliquam sed
                 scelerisque metus, quis pretium odio. Integer ultricies est non odio dignissim, quis laoreet elit
@@ -178,8 +263,9 @@ onUnmounted(() => {
             </p>
 
         </section>
-        <section class="flex flex-col py-8 h-auto">
-            <h2 class="text-2xl text-white font-bold text-center">Mon parcours</h2>
+
+        <section class="flex flex-col pt-8 h-auto">
+            <h2 class="text-2xl text-white font-heading text-center">Mon parcours</h2>
             <div class="w-full h-[1px] bg-white my-4"></div>
 
             <div class="flex justify-center items-center gap-8 my-4 ">
@@ -223,6 +309,13 @@ onUnmounted(() => {
                     </div>
                 </UiScrollReveal>
                 <UiBadgeSecondary label="X" @click="friseState = ''"></UiBadgeSecondary>
+            </div>
+
+            <div class="w-full h-[1px] bg-white mt-4 mb-8"></div>
+
+            <div class="flex gap-6 justify-center my-8">
+                <UiButtonPrimary label="Télécharger mon CV"></UiButtonPrimary>
+                <UiButtonSecondary label="Me contacter">Contact</UiButtonSecondary>
             </div>
 
 
