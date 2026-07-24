@@ -67,10 +67,10 @@
 
                         <div class="flex gap-4 transition-transform duration-500 ease-in-out"
                             :style="{ transform: `translateX(${translateXgallery}px)` }">
-                            <div class="min-w-[240px] h-[160px] cursor-pointer  hover:scale-[1.3] relative z-10 hover:z-50 transition-all duration-500"
+                            <div class="min-w-[240px] h-[160px] cursor-pointer  hover:scale-[1.3]  hover:z-50 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all duration-500 relative z-10 overflow-hidden "
                                 v-for="image in project.gallery" :key="image.id">
                                 <img :src="`${$config.public.apiBaseUrl}${image.contentUrl}`" :alt="image.title"
-                                    class="w-full h-full object-cover grayscale hover:grayscale-0 rounded-lg shadow-lg">
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0">
                             </div>
                         </div>
                     </div>

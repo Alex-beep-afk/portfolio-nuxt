@@ -1,13 +1,14 @@
 <template>
 
     <header
-        class="sticky top-0 left-0 right-0 
+        class="fixed top-0 left-0 right-0 
         w-full flex justify-between items-center 
-        px-8 lg:px-16 bg-black z-50 h-24 border-b border-slate-400/30 
+        px-8 lg:px-16 bg-black/25 backdrop-blur-md z-50 h-24 border-b border-slate-400/30 
         shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
         <NuxtLink to="/" class="flex items-center">
             <img src="/medias/images/logo.webp" alt="logo" class="h-24 filter brightness-0 invert">
-            <p class="text-white font-bold text-3xl font-heading">Alexandre Prigent</p>
+            <p class="text-white text-2xl md:text-4xl font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] hover:text-blue-300 transition-colors duration-500 ease-in-out">Alexandre
+                Prigent</p>
         </NuxtLink>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
@@ -18,9 +19,12 @@
         </svg>
 
         <nav class="text-white gap-16 hidden md:flex">
-            <UiAnimatedLink to="/projects">Projets</UiAnimatedLink>
-            <UiAnimatedLink to="/about">A propos</UiAnimatedLink>
-            <UiAnimatedLink to="/contact">Contact</UiAnimatedLink>
+            <UiAnimatedLink
+                to="/projects">Projets</UiAnimatedLink>
+            <UiAnimatedLink
+                to="/about">A propos</UiAnimatedLink>
+            <UiAnimatedLink
+                to="/contact">Contact</UiAnimatedLink>
         </nav>
     </header>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <NuxtLink :to = "to" class=" text-white 
     relative cursor-pointer 
-    transition-all duration-500 ease-in-out group">
+    transition-all duration-500 ease-in-out group font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] text-xl hover:text-blue-300">
 
         <slot />
 
