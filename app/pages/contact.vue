@@ -40,6 +40,13 @@ const submitForm = async () => {
         form.phoneNumber = ''
         form.name = ''
 
+        // Vider l'objet Touched
+        touched.object = false;
+        touched.mail = false;
+        touched.content = false;
+        touched.phoneNumber = false;
+        touched.name = false;
+
     }
     catch (error) {
         errorMessage.value = "Une erreur est survenue lors de l'envoi de votre message."
@@ -48,6 +55,40 @@ const submitForm = async () => {
         isSubmitting.value = false;
     }
 }
+
+//validations
+
+const touched = reactive({
+    object: false,
+    mail: false,
+    content: false,
+    phoneNumber: false,
+    name: false,
+})
+
+const isObjectValid = computed(() => {
+    return form.object.length >= 3;
+})
+
+const isMailValid = computed(() => {
+    return form.mail.length >= 3;
+})
+
+const isContentValid = computed(() => {
+    return form.content.length >= 10;
+})
+
+const isPhoneNumberValid = computed(() => {
+    return form.phoneNumber.length >= 10;
+})
+
+const isNameValid = computed(() => {
+    return form.name.length >= 3;
+})
+
+const isFormValid = computed(() => {
+    return isObjectValid.value && isMailValid.value && isContentValid.value && isPhoneNumberValid.value && isNameValid.value;
+})
 
 //Particules
 
@@ -136,40 +177,86 @@ onUnmounted(() => {
             <div class="grid grid-cols-2 gap-8 ">
                 <div>
                     <label for="name" class="text-blue-300/70 block mb-1">Nom</label>
-                    <input id="name" v-model="form.name" type="text" required placeholder="Votre nom"
-                        class="text-white border w-full p-3 border-white/10 rounded-xl bg-gray-800 
-                        focus:outline-none focus:ring-2 focus:ring-blue-400/80 
-                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] transition-all duration-300 ease-in-out" />
+                    <input id="name" 
+                    v-model="form.name"
+                    @blur="touched.name = true" 
+                    type="text" 
+                    required placeholder="Votre nom"
+                    :class="{
+                        'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.name && isNameValid,
+                        'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.name && !isNameValid,
+                        'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.name,
+                    }"
+                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
                     <label for="object" class="text-blue-300/70 block mb-1">Objet</label>
-                    <input id="object" v-model="form.object" type="text" required placeholder="Objet de votre message"
-                        class="text-white border w-full p-3 border-white/10 rounded-xl 
-                        focus:outline-none focus:ring-2 focus:ring-blue-400/80 bg-gray-800 
-                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] transition-all duration-300 ease-in-out" />
+                    <input @blur="touched.object = true" 
+                    id="object" 
+                    v-model="form.object" 
+                    type="text" 
+                    required 
+                    placeholder="Objet de votre message"
+                    :class="{
+                        'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.object && isObjectValid,
+                        'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.object && !isObjectValid,
+                        'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.object,
+                    }"
+                    class="text-white border w-full p-3  rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
                     <label for="mail" class="text-blue-300/70 block mb-1">Email</label>
-                    <input id="mail" v-model="form.mail" type="email" required placeholder="Votre mail"
-                        class="text-white border w-full p-3 border-white/10 rounded-xl 
-                        focus:outline-none focus:ring-2 focus:ring-blue-400/80 bg-gray-800 
-                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] transition-all duration-300 ease-in-out" />
+                    <input 
+                    id="mail" 
+                    @blur="touched.mail = true" 
+                    v-model="form.mail" 
+                    type="email" 
+                    required 
+                    placeholder="Votre mail"
+                    :class="{
+                        'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.mail && isMailValid,
+                        'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.mail && !isMailValid,
+                        'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.mail,
+                    }"
+                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
                     <label for="phoneNumber" class="text-blue-300/70 block mb-1">Numéro de téléphone</label>
-                    <input id="phoneNumber" v-model="form.phoneNumber" type="text" required
-                        placeholder="Votre numéro de téléphone"
-                        class="text-white border w-full p-3 border-white/10 rounded-xl 
-                        focus:outline-none focus:ring-2 focus:ring-blue-400/80 bg-gray-800 
-                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] transition-all duration-300 ease-in-out" />
+                    <input 
+                    id="phoneNumber" 
+                    @blur="touched.phoneNumber = true" 
+                    v-model="form.phoneNumber" 
+                    type="text" 
+                    required
+                    placeholder="Votre numéro de téléphone"
+                    :class="{
+                        'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.phoneNumber && isPhoneNumberValid,
+                        'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.phoneNumber && !isPhoneNumberValid,
+                        'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.phoneNumber,
+                    }"
+                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
             </div>
             <div>
                 <label for="content" class="block mb-1 text-blue-300/70">Message</label>
-                <textarea id="content" v-model="form.content" required rows="5" placeholder="Votre message"
-                    class="text-white border w-full border-white/10 p-3 border-white/10 rounded-xl 
-                    focus:outline-none focus:ring-2 focus:ring-blue-400/80 bg-gray-800 
-                    hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] transition-all duration-300 ease-in-out"></textarea>
+                <textarea 
+                id="content" 
+                @blur="touched.content = true" 
+                v-model="form.content" 
+                required 
+                rows="5" 
+                placeholder="Votre message"
+                :class="{
+                    'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.content && isContentValid,
+                    'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.content && !isContentValid,
+                    'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.content,
+                }"
+                class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                    focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out"></textarea>
             </div>
 
             
@@ -181,8 +268,12 @@ onUnmounted(() => {
 
             <UiTerminalText v-if="errorMessage" :text=errorMessage :speed="100"
                 :size="20" :colorText="'text-red-300'" :colorCursor="'bg-red-300'" />
-            <button type="submit" :disabled="isSubmitting"
-                class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
+            <button type="submit" :disabled="isSubmitting || !isFormValid"
+                class="relative overflow-hidden 
+                group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 
+                rounded-full transition-colors duration-300 hover:text-white"
+                :class ="{'cursor-not-allowed grayscale': !isFormValid || isSubmitting}">
+                 
                 <span
                     class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
 
