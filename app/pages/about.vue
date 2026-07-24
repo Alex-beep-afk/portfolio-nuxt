@@ -200,11 +200,11 @@ onUnmounted(() => {
                     <div v-if="textSwitcherState === 0" class="flex flex-col items-center justify-center text-white w-full">
                         <UiTerminalText :text="'Informations Générales'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg">
-                            <li>Nom: Prigent</li>
-                            <li>Prénom: Alexandre</li>
-                            <li>Âge: 34 ans</li>
-                            <li>Métier: Développeur web</li>
+                        <ul class="text-lg min-h-[170px]">
+                            <li><span class="text-blue-500 font-semibold">Nom :</span> Prigent</li>
+                            <li><span class="text-blue-500 font-semibold">Prénom :</span> Alexandre</li>
+                            <li><span class="text-blue-500 font-semibold">Localisation :</span> Roman-sur-Isère</li>
+                            <li><span class="text-blue-500 font-semibold">Métier :</span> Développeur web</li>
                         </ul>
                     </div>
 
@@ -212,13 +212,13 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full ">
                         <UiTerminalText :text="'ToolBox'" :size="32" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg">
-                            <li>Symfony: ⭐⭐⭐</li>
-                            <li>Vue: ⭐⭐⭐</li>
-                            <li>Nuxt: ⭐⭐</li>
-                            <li>PHP: ⭐⭐⭐</li>
-                            <li>SQL: ⭐⭐</li>
-                            <li>Tailwind: ⭐⭐⭐</li>
+                        <ul class="text-lg min-h-[170px]">
+                            <li><span class="text-blue-500 font-semibold">Symfony :</span> ⭐⭐⭐</li>
+                            <li><span class="text-blue-500 font-semibold">Vue.js :</span> ⭐⭐⭐</li>
+                            <li><span class="text-blue-500 font-semibold">Nuxt.js :</span> ⭐⭐</li>
+                            <li><span class="text-blue-500 font-semibold">PHP :</span> ⭐⭐⭐</li>
+                            <li><span class="text-blue-500 font-semibold">SQL :</span> ⭐⭐</li>
+                            <li><span class="text-blue-500 font-semibold">Tailwind :</span> ⭐⭐⭐</li>
                            
                         </ul>
                     </div>
@@ -227,11 +227,11 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full">
                         <UiTerminalText :text="'Centres d\'intérêts'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg">
-                            <li>Escalade</li>
-                            <li>Randonnée</li>
-                            <li>Bricolage</li>
-                            <li>Cuisine</li>
+                        <ul class="text-lg min-h-[170px]">
+                            <li><span class="text-blue-500 font-semibold">Jeux vidéo</span></li>
+                            <li><span class="text-blue-500 font-semibold">Randonnée</span></li>
+                            <li><span class="text-blue-500 font-semibold">Bricolage</span></li>
+                            <li><span class="text-blue-500 font-semibold">Cuisine</span></li>
                         </ul>
                     </div>
                 </transition>
@@ -239,11 +239,11 @@ onUnmounted(() => {
             </div>
 
             <div class="flex items-center gap-4">
-                <span @click="textSwitcherState = 0" :class="textSwitcherState === 0 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 0" :class="textSwitcherState === 0 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
-                <span @click="textSwitcherState = 1" :class="textSwitcherState === 1 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 1" :class="textSwitcherState === 1 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
-                <span @click="textSwitcherState = 2" :class="textSwitcherState === 2 ? 'bg-blue-500' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 2" :class="textSwitcherState === 2 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
             </div>
         </section>
