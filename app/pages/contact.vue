@@ -71,7 +71,7 @@ const isObjectValid = computed(() => {
 })
 
 const isMailValid = computed(() => {
-    return form.mail.length >= 3;
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(form.mail);
 })
 
 const isContentValid = computed(() => {
@@ -79,7 +79,7 @@ const isContentValid = computed(() => {
 })
 
 const isPhoneNumberValid = computed(() => {
-    return form.phoneNumber.length >= 10;
+    return /^0[1-9](?:\d{2}){4}$/.test(form.phoneNumber);
 })
 
 const isNameValid = computed(() => {
@@ -137,29 +137,37 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class="min-h-screen gap-8 lg:gap-0 flex-col flex lg:flex-row lg:justify-evenly lg:items-center p-8"
+    <main class="min-h-screen gap-8 flex flex-col p-8 mt-24
+                 xl:gap-0 xl:flex-row xl:justify-evenly xl:items-center xl:mt-0"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%)' }">
-        <section class="flex flex-col w-full lg:w-2/5">
-            <div class="flex flex-col gap-2 my-5 lg:items-start">
+        <section class="flex flex-col w-full 
+                        xl:w-2/5">
+
+            <div class="flex flex-col items-center gap-2 my-5 
+                        xl:items-start ">
                 <UiTerminalText text="/* LET'S CONNECT */" :speed="100" :size="20" :colorText="'text-blue-500'"
                     :colorCursor="'bg-blue-300'" />
-                <h1 class="text-4xl font-bold font-heading my-6 text-white text-center lg:text-start">Prêt à rejoindre votre équipe.</h1>
-                <p class="text-blue-300 text-lg text-center lg:text-start">Passionné par la création d'applications web,
+                <h1 class="text-4xl font-heading my-6 text-white text-center drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] xl:text-start">Prêt à rejoindre votre équipe.</h1>
+                <p class="text-blue-300 text-lg text-center xl:text-start">Passionné par la création d'applications web,
                     je cherche une entreprise pour mon alternance. N'hésitez pas à m'envoyer un message pour que
                     l'on puisse discuter de notre future collaboration !</p>
             </div>
 
-            <div class="flex flex-col gap-4">
-                <div class="flex flex-col gap-1">
+            <div class="flex flex-col items-center gap-8 my-10 
+                        xl:items-start xl:my-0">
+                <div class="flex flex-col items-center gap-1 
+                        xl:items-start ">
                     <span class="font-bold text-blue-500">Email</span>
                     <p class="text-white">Alex-test@gmail.com</p>
                 </div>
 
-                <div class="flex flex-col gap-1">
+                <div class="flex flex-col items-center gap-1 
+                        xl:items-start ">
                     <span class="font-bold text-blue-500">Basé à</span>
                     <p class="text-white">Lyon, France</p>
                 </div>
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col items-center gap-2 
+                        xl:items-start ">
                     <span class="font-bold text-blue-500">Mes reseaux</span>
                     <div class="flex gap-4">
                         <UiBadgePrimary to="#" linkText="Github" />
@@ -172,7 +180,8 @@ onUnmounted(() => {
 
 
         <form @submit.prevent="submitForm"
-            class=" w-full lg:max-w-xl flex flex-col gap-10 p-8 border border-blue-500/20 rounded-3xl bg-gray-950/70 shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
+            class=" w-full flex flex-col gap-10 p-8 border border-blue-500/20 rounded-3xl bg-gray-950/70 shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]
+            xl:max-w-xl ">
 
             <div class="grid grid-cols-2 gap-8 ">
                 <div>
@@ -180,6 +189,7 @@ onUnmounted(() => {
                     <input id="name" 
                     v-model="form.name"
                     @blur="touched.name = true" 
+                    @focus="successMessage = ''; errorMessage = ''"
                     type="text" 
                     required placeholder="Votre nom"
                     :class="{
@@ -187,12 +197,14 @@ onUnmounted(() => {
                         'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.name && !isNameValid,
                         'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.name,
                     }"
-                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                    class="text-xs md:text-base text-white border w-full p-3 rounded-xl bg-gray-800 
                         focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
                     <label for="object" class="text-blue-300/70 block mb-1">Objet</label>
-                    <input @blur="touched.object = true" 
+                    <input 
+                    @blur="touched.object = true" 
+                    @focus="successMessage = ''; errorMessage = ''"
                     id="object" 
                     v-model="form.object" 
                     type="text" 
@@ -203,14 +215,15 @@ onUnmounted(() => {
                         'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.object && !isObjectValid,
                         'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.object,
                     }"
-                    class="text-white border w-full p-3  rounded-xl bg-gray-800 
+                    class="text-xs md:text-base text-white border w-full p-3  rounded-xl bg-gray-800 
                         focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
                     <label for="mail" class="text-blue-300/70 block mb-1">Email</label>
                     <input 
                     id="mail" 
-                    @blur="touched.mail = true" 
+                    @blur="touched.mail = true"
+                    @focus="successMessage = ''; errorMessage = ''"
                     v-model="form.mail" 
                     type="email" 
                     required 
@@ -220,24 +233,25 @@ onUnmounted(() => {
                         'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.mail && !isMailValid,
                         'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.mail,
                     }"
-                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                    class="text-xs md:text-base text-white border w-full p-3 rounded-xl bg-gray-800 
                         focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
                 <div>
-                    <label for="phoneNumber" class="text-blue-300/70 block mb-1">Numéro de téléphone</label>
+                    <label for="phoneNumber" class="text-blue-300/70 block mb-1">Téléphone</label>
                     <input 
                     id="phoneNumber" 
-                    @blur="touched.phoneNumber = true" 
+                    @blur="touched.phoneNumber = true"
+                    @focus="successMessage = ''; errorMessage = ''"
                     v-model="form.phoneNumber" 
                     type="text" 
                     required
-                    placeholder="Votre numéro de téléphone"
+                    placeholder="Numéro de téléphone"
                     :class="{
                         'border-green-500 focus:ring-green-500 hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.25)]': touched.phoneNumber && isPhoneNumberValid,
                         'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.phoneNumber && !isPhoneNumberValid,
                         'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.phoneNumber,
                     }"
-                    class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                    class="text-xs md:text-base text-white border w-full p-3 rounded-xl bg-gray-800 
                         focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out" />
                 </div>
             </div>
@@ -246,6 +260,7 @@ onUnmounted(() => {
                 <textarea 
                 id="content" 
                 @blur="touched.content = true" 
+                @focus="successMessage = ''; errorMessage = ''"
                 v-model="form.content" 
                 required 
                 rows="5" 
@@ -255,19 +270,46 @@ onUnmounted(() => {
                     'border-red-500 focus:ring-red-500 hover:border-red-500 hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.25)]': touched.content && !isContentValid,
                     'border-white/10 focus:ring-blue-400/80 hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]': !touched.content,
                 }"
-                class="text-white border w-full p-3 rounded-xl bg-gray-800 
+                class="text-white text-xs md:text-base border w-full p-3 rounded-xl bg-gray-800 
                     focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out"></textarea>
             </div>
 
-            
-
-            <UiTerminalText v-if="successMessage" :text=successMessage :speed="100" :size="20"
-                :colorText="'text-green-300'" :colorCursor="'bg-green-300'" />
-
-
-
-            <UiTerminalText v-if="errorMessage" :text=errorMessage :speed="100"
-                :size="20" :colorText="'text-red-300'" :colorCursor="'bg-red-300'" />
+            <ul>
+                <li class="flex gap-4 items-baseline" v-if="touched.name && !isNameValid">
+                    <span class="h-1.5 w-1.5 rounded-full bg-red-300"></span>
+                    <UiTerminalText text="Le nom doit contenir au moins 3 caractères." :speed="45" :size="14"
+                        :colorText="'text-red-300'" :colorCursor="'bg-red-300'" :minHeight="'min-h-[0px]'"/>
+                </li>
+                <li class="flex gap-4 items-baseline" v-if="touched.object && !isObjectValid">
+                    <span class="h-1.5 w-1.5 rounded-full bg-red-300"></span>
+                    <UiTerminalText text="L'objet doit contenir au moins 3 caractères." :speed="45" :size="14"
+                        :colorText="'text-red-300'" :colorCursor="'bg-red-300'" :minHeight="'min-h-[0px]'" />
+                </li>
+                <li class="flex gap-4 items-baseline" v-if="touched.mail && !isMailValid">
+                    <span class="h-1.5 w-1.5 rounded-full bg-red-300"></span>
+                    <UiTerminalText text="Le mail doit être valide." :speed="45" :size="14"
+                        :colorText="'text-red-300'" :colorCursor="'bg-red-300'" :minHeight="'min-h-[0px]'" />
+                </li>
+                <li class="flex gap-4 items-baseline" v-if="touched.phoneNumber && !isPhoneNumberValid">
+                    <span class="h-1.5 w-1.5 rounded-full bg-red-300"></span>
+                    <UiTerminalText text="Le numéro de téléphone doit être valide. (ex: 0612345678)" :speed="45"
+                        :size="14" :colorText="'text-red-300'" :colorCursor="'bg-red-300'" :minHeight="'min-h-[0px]'" />
+                </li>
+                <li class="flex gap-4 items-baseline" v-if="touched.content && !isContentValid">
+                    <span class="h-1.5 w-1.5 rounded-full bg-red-300"></span>
+                    <UiTerminalText text="Le message doit contenir au moins 10 caractères." :speed="45" :size="14"
+                        :colorText="'text-red-300'" :colorCursor="'bg-red-300'" :minHeight="'min-h-[0px]'" />
+                </li>
+                <li class="flex gap-4 items-baseline justify-center">
+                    <UiTerminalText v-if="successMessage" :text=successMessage :speed="100" :size="20"
+                    :colorText="'text-green-300'" :colorCursor="'bg-green-300'" />
+                </li>
+                <li class="flex gap-4 items-baseline justify-center">
+                    <UiTerminalText v-if="errorMessage" :text=errorMessage :speed="100"
+                    :size="20" :colorText="'text-red-300'" :colorCursor="'bg-red-300'" />
+                </li>
+            </ul>
+           
             <button type="submit" :disabled="isSubmitting || !isFormValid"
                 class="relative overflow-hidden 
                 group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 

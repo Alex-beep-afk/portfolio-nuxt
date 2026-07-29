@@ -1,6 +1,6 @@
 <template>
 
-    <div :class="colorText" class="font-terminal text-center flex items-baseline gap-1 min-h-[40px]"
+    <div :class="colorText + ' ' + minHeight" class="font-terminal text-center flex items-baseline gap-1"
         :style="width < 768 ? { fontSize: `${size * 0.8}px` } : { fontSize: `${size}px` }"> {{ displayText }}
         <span v-if="displayText.length > 0" :class="colorCursor" class="h-px animate-pulse" :style="{ width: `${size / 2}px` }"></span>
     </div>
@@ -34,6 +34,11 @@ const props = defineProps({
         type: String,
         required: false,
         default: "bg-blue-500"
+    },
+    minHeight: {
+        type: String,
+        required: false,
+        default: "min-h-[40px]"
     }
 })
 

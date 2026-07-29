@@ -6,8 +6,11 @@
         px-8 lg:px-16 bg-black/25 backdrop-blur-md z-50 h-24 border-b border-slate-400/30 
         shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
         <NuxtLink to="/" class="flex items-center">
-            <img src="/medias/images/logo.webp" alt="logo" class="h-24 filter brightness-0 invert">
-            <p class="text-white text-2xl md:text-4xl font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] hover:text-blue-300 transition-colors duration-500 ease-in-out">Alexandre
+            <img src="/medias/images/logo.webp" alt="logo" class="h-24 filter brightness-0 invert hidden md:block">
+            <p class="text-white text-2xl text-center
+            xl:text-left xl:text-4xl 
+            font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] 
+            hover:text-blue-300 transition-colors duration-500 ease-in-out">Alexandre
                 Prigent</p>
         </NuxtLink>
 
@@ -22,7 +25,7 @@
             <UiAnimatedLink
                 to="/projects">Projets</UiAnimatedLink>
             <UiAnimatedLink
-                to="/about">A propos</UiAnimatedLink>
+                to="/about">About</UiAnimatedLink>
             <UiAnimatedLink
                 to="/contact">Contact</UiAnimatedLink>
         </nav>
