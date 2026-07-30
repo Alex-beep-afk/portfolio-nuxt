@@ -86,19 +86,9 @@
 
                     <div class=" border border-slate-400/30 mb-10 mt-10"></div>
 
-                    <div class="flex justify-between items-center gap-10">
-                        <a :href="project.link"
-                            class="relative overflow-hidden group px-8 py-3 font-bold text-blue-600 border-2 border-blue-600 rounded-full transition-colors duration-300 hover:text-white">
-                            <span
-                                class="absolute inset-0 bg-blue-600 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-
-                            <span class="relative z-10">Voir le projet en ligne</span>
-
-                        </a>
-                        <a class="bg-black px-8 cursor-pointer py-3 font-bold text-white rounded-full border border-slate-400/30 hover:bg-white/10
-          transition-colors duration-500 ease-in-out"> Voir le projet sur GitHub
-
-                        </a>
+                    <div class="flex justify-between gap-10">
+                        <UiButtonPrimary label="Voir le projet en ligne" :to="project.link" class="text-center" />
+                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.github" class="text-center" />
                     </div>
 
                 </div>

@@ -7,30 +7,30 @@ const textSwitcherState = ref(0);
 let startX = 0;
 
 const onPointerDown = (e) => {
-  
-  startX = e.clientX;
+
+    startX = e.clientX;
 };
 
 const onPointerUp = (e) => {
-  
-  const endX = e.clientX;
-  
-  const diffX = startX - endX;
 
-  
-  if (Math.abs(diffX) > 50) {
-    if (diffX > 0) {
-      
-      if (textSwitcherState.value < 2) {
-        textSwitcherState.value++;
-      }
-    } else {
-      
-      if (textSwitcherState.value > 0) {
-        textSwitcherState.value--;
-      }
+    const endX = e.clientX;
+
+    const diffX = startX - endX;
+
+
+    if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+
+            if (textSwitcherState.value < 2) {
+                textSwitcherState.value++;
+            }
+        } else {
+
+            if (textSwitcherState.value > 0) {
+                textSwitcherState.value--;
+            }
+        }
     }
-  }
 };
 
 
@@ -182,7 +182,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class="min-h-screen gap-8 flex flex-col items-center p-8 bg-scroll bg-center"
+    <main class="min-h-screen gap-8 flex flex-col items-center pt-32 px-8 lg:px-16 bg-scroll bg-center"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%) no-repeat center center fixed' }">
 
         <section class="flex flex-col items-center p-16 gap-8 rounded-2xl 
@@ -193,11 +193,12 @@ onUnmounted(() => {
                 <img class="max-w-full rounded-2xl" src="/medias/images/Alex.webp" alt="Avatar">
             </div>
 
-            <div class="flex min-h-[250px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y" @pointerdown="onPointerDown"
-                @pointerup="onPointerUp">
+            <div class="flex min-h-[250px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y"
+                @pointerdown="onPointerDown" @pointerup="onPointerUp">
 
                 <transition name="slide" mode="out-in">
-                    <div v-if="textSwitcherState === 0" class="flex flex-col items-center justify-center text-white w-full">
+                    <div v-if="textSwitcherState === 0"
+                        class="flex flex-col items-center justify-center text-white w-full">
                         <UiTerminalText :text="'Informations Générales'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
                         <ul class="text-lg min-h-[170px]">
@@ -219,7 +220,7 @@ onUnmounted(() => {
                             <li><span class="text-blue-500 font-semibold">PHP :</span> ⭐⭐⭐</li>
                             <li><span class="text-blue-500 font-semibold">SQL :</span> ⭐⭐</li>
                             <li><span class="text-blue-500 font-semibold">Tailwind :</span> ⭐⭐⭐</li>
-                           
+
                         </ul>
                     </div>
 
@@ -239,11 +240,14 @@ onUnmounted(() => {
             </div>
 
             <div class="flex items-center gap-4">
-                <span @click="textSwitcherState = 0" :class="textSwitcherState === 0 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 0"
+                    :class="textSwitcherState === 0 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
-                <span @click="textSwitcherState = 1" :class="textSwitcherState === 1 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 1"
+                    :class="textSwitcherState === 1 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
-                <span @click="textSwitcherState = 2" :class="textSwitcherState === 2 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
+                <span @click="textSwitcherState = 2"
+                    :class="textSwitcherState === 2 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-blue-500/50'"
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
             </div>
         </section>
@@ -264,7 +268,7 @@ onUnmounted(() => {
 
         </section>
 
-        <section class="flex flex-col pt-8 h-auto">
+        <section class="flex flex-col py-8 h-auto">
             <h2 class="text-2xl text-white font-heading text-center">Mon parcours</h2>
             <div class="w-full h-[1px] bg-white my-4"></div>
 
@@ -314,8 +318,13 @@ onUnmounted(() => {
             <div class="w-full h-[1px] bg-white mt-4 mb-8"></div>
 
             <div class="flex gap-6 justify-center my-8">
-                <UiButtonPrimary label="Télécharger mon CV"></UiButtonPrimary>
-                <UiButtonSecondary label="Me contacter">Contact</UiButtonSecondary>
+                <UiButtonPrimary 
+                label="Télécharger mon CV" 
+                to="/medias/documents/CV_072026.pdf"
+                download="CV_Alexandre_Prigent.pdf" 
+                target="_blank" 
+                external />
+                <UiButtonSecondary label="Me contacter" to="/contact"/>
             </div>
 
 

@@ -12,7 +12,7 @@ await fetchProjects();
 
             <source src="/medias/backgroundFolio.mp4" type="video/mp4">
         </video>
-        <section class="px-8 py-16 lg:p-16">
+        <section class="pt-32 pb-8 px-8 lg:px-16">
             <SectionGridProjects :projects="projects" />
         </section>
     </main>

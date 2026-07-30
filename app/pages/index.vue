@@ -39,7 +39,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     </video>
 
 
-    <section class="px-8 py-16 lg:p-16 h-screen">
+    <section class="px-8 py-32 lg:p-16 h-screen">
       <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
 
         <UiScrollReveal>
@@ -68,7 +68,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       </div>
     </section>
 
-    <section class="px-8 py-16 lg:p-16 bg-black flex flex-col gap-16 relative mb-16">
+    <section class="p-12 lg:p-16 bg-black flex flex-col gap-16 relative mb-16">
 
       <div class="h-16 bg-gradient-to-b from-transparent to-black w-full absolute right-0 -top-16">
       </div>
@@ -94,7 +94,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       
     </section>
 
-    <section class="bg-black border-y border-slate-400/30 px-8 py-32 lg:px-16 flex flex-col gap-16 ">
+    <section class="bg-black border-y border-slate-400/30 p-12 lg:px-16 flex flex-col gap-16 ">
       <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
         <UiScrollReveal>
           <UiTerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
