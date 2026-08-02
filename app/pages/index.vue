@@ -1,6 +1,6 @@
 <script setup>
 
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 //Appel Api pour les projets
 const { projects, fetchProjects } = useProjects();
 await fetchProjects();
@@ -18,6 +18,7 @@ const { data: techData, error: techError } = await useFetch(`${config.public.api
 const displayedProjects = computed(() => {
   return projects.value.slice(0, 4)
 })
+
 const displayTechs = computed(() => {
   return techData.value ? techData.value.member : []
 })
@@ -39,24 +40,29 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     </video>
 
 
-    <section class="px-8 py-32 lg:p-16 h-screen">
-      <div class="xl:w-3/5 xl:justify-center items-center flex flex-col gap-10 h-full">
+    <section class="p-8 lg:p-16 h-screen">
+
+      <div class="flex flex-col items-center gap-5 h-full justify-center xl:w-3/5 2xl:gap-10">
 
         <UiScrollReveal>
           <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="100" :size="24" />
         </UiScrollReveal>
 
-        <h1 class="xl:text-7xl text-center text-lg font-bold text-white font-heading">Création <span
+        <h1 class="2xl:text-7xl xl:text-4xl text-center text-lg font-bold text-white font-heading">Création <span
             class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
-        <p class="text-blue-300 font-semibold text-lg text-center">Je suis devellopeur junior spécialisé en
+
+        <p class="text-blue-300 font-semibold text-lg text-center">Devellopeur junior spécialisé en
           développement web et
           mobile. Passionné par les
           nouvelles technologies et l'innovation, je cherche activement une alternance afin de developper mes
-          compétences et
-          contribuer à des projets innovants. Je suis également un joueur passionné et un grand amateur de café, deux passions
+          compétences ,
+          contribuer à des projets innovants et apprendre de nouvelles technologies. Je suis également un joueur
+          passionné et un grand amateur de café, deux passions
           qui influencent mon approche créative
-          et ma motivation.</p>
+          et ma motivation.
+        </p>
+
         <div class="flex gap-5 items-center">
 
           <UiButtonPrimary label="Voir mes projets" to="/projects" />
@@ -73,14 +79,17 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       <div class="h-16 bg-gradient-to-b from-transparent to-black w-full absolute right-0 -top-16">
       </div>
 
-      <div class="flex flex-col items-center md:flex-row md:justify-between md:items-start h-1/6 gap-5">
-        <div class="flex flex-col justify-center items-center md:items-start gap-4 min-h-[120px]">
+      <div class="flex flex-col items-center h-1/6 gap-5
+      lg:flex-row lg:justify-between lg:items-start ">
+
+        <div class="flex flex-col justify-center items-center gap-4 min-h-[120px] 
+                    lg:items-start ">
 
           <UiScrollReveal>
             <UiTerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
           </UiScrollReveal>
 
-          <p class="text-blue-300 font-semibold text-lg text-center md:text-start">Decouvrez mes differents projets et
+          <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Decouvrez mes differents projets et
             mes experiences
             professionnelles.</p>
         </div>
@@ -91,7 +100,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
 
       <SectionGridProjects :projects="displayedProjects" />
 
-      
+
     </section>
 
     <section class="bg-black border-y border-slate-400/30 p-12 lg:px-16 flex flex-col gap-16 ">
@@ -106,41 +115,37 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
 
-        <div v-for="tech in displayTechs" :key="tech.id"
-          class="p-8 bg-slate-900/50 rounded-2xl border border-white/5 flex flex-col items-center transition-all hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]">
-          <div class="border border-slate-400/50 bg-slate-900 rounded-2xl w-24 h-24">
+        <TechCard v-for="tech in displayTechs" :key="tech.id" :tech="tech" />
 
-            <img v-if="tech.logo" :src="`${config.public.apiBaseUrl}${tech.logo.contentUrl}`" :alt="tech.title"
-              class=" object-cover rounded-2xl">
-          </div>
-          <h3 class="text-white  text-lg font-bold">{{ tech.title }}</h3>
-        </div>
       </div>
     </section>
 
     <section
-      class="flex flex-col justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
-      <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
-      <div class="flex flex-col gap-4 w-full md:w-1/2">
-        <p class="text-white font-semibold text-xl">Actuellement en reconversion professionnelle, je suis à la recherche
-          d'une alternance pour mettre en pratique mes compétences et acquérir de nouvelles connaissances.</p>
-        <p class="text-blue-300 font-semibold italic text-lg">"La créativité c'est l'intelligence qui s'amuse " - Albert
-          Einstein</p>
+      class="flex flex-col md:flex-row items-center justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+
+      <div class="flex flex-col items-center md:items-start gap-4 w-full md:w-1/2">
+        <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
+        <p class="text-white font-semibold text-xl text-center md:text-start">Actuellement en reconversion
+          professionnelle, et déjà titulaire d'un
+          diplome en développement web et web mobile, je suis à la recherche
+          d'une alternance pour approfondir mes compétences et acquérir de nouvelles connaissances.</p>
       </div>
+
+      <UiButtonPrimary label="A propos de moi" to="/about" />
 
     </section>
 
     <section
-      class="flex flex-col md:flex-row justify-between md:items-center px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
-      <div class="flex flex-col gap-4 w-full md:w-1/2">
+      class="flex flex-col md:flex-row justify-between items-center px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+      <div class="flex flex-col items-center md:items-start gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
         <p class="text-white font-semibold text-3xl lg:text-5xl font-heading">Travaillons ensemble !</p>
 
       </div>
 
-      <div class="">
-        <UiButtonSecondary label="Me contacter" to="/contact" />
-      </div>
+
+      <UiButtonSecondary label="Me contacter" to="/contact" />
+
 
     </section>
 
