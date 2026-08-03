@@ -42,17 +42,17 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
 
     <section class="p-8 lg:p-16 h-screen">
 
-      <div class="flex flex-col items-center gap-5 h-full justify-center xl:w-3/5 2xl:gap-10">
+      <div class="flex flex-col items-center gap-10 h-full justify-center xl:w-3/5 xl:gap-10">
 
         <UiScrollReveal>
           <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="100" :size="24" />
         </UiScrollReveal>
 
-        <h1 class="2xl:text-7xl xl:text-4xl text-center text-lg font-bold text-white font-heading">Création <span
+        <h1 class="text-center text-xl font-bold text-white font-heading xl:text-6xl">Création <span
             class="text-blue-500">d'experiences</span> digitales
           avec précision .</h1>
 
-        <p class="text-blue-300 font-semibold text-lg text-center">Devellopeur junior spécialisé en
+        <p class="text-blue-300 font-semibold text-center xl:text-xl">Devellopeur junior spécialisé en
           développement web et
           mobile. Passionné par les
           nouvelles technologies et l'innovation, je cherche activement une alternance afin de developper mes
