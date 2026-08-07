@@ -43,35 +43,56 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-screen">
-    <h1>Connexion Admin</h1>
+  
+  <div class="flex flex-col justify-center items-center h-screen">
+    <h1 class="text-white text-2xl text-center mb-12
+                font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] 
+                hover:text-blue-300 transition-colors duration-500 ease-in-out"
+    >Connexion Admin</h1>
     <!-- Si on a une erreur (ex: mauvais mot de passe), on l'affiche ici -->
     <div v-if="errorMessage" class="error-msg">
       {{ errorMessage }}
     </div>
-    <form @submit.prevent="handleLogin">
+    <form class="flex flex-col gap-8" @submit.prevent="handleLogin">
+
       <div>
-        <label for="username">Email</label>
+        <label for="username">Username</label>
         <input 
           id="username" 
           v-model="username" 
           type="text" 
           required 
-          placeholder="AlexTest"
+          placeholder="Admin"
+          class="text-xs md:text-base text-white border w-full p-3  rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out 
+                        border-white/10 focus:ring-blue-400/80 
+                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]"
         />
       </div>
+
       <div>
         <label for="password">Mot de passe</label>
         <input 
           id="password" 
           v-model="password" 
           type="password" 
-          required 
+          required
+          class="text-xs md:text-base text-white border w-full p-3  rounded-xl bg-gray-800 
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out 
+                        border-white/10 focus:ring-blue-400/80 
+                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]"
         />
       </div>
-      <button type="submit" :disabled="isLoading">
+
+      <button class="text-white mt-12 border border-blue-500 p-3 rounded-xl bg-gray-950/70 shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]
+                        focus:outline-none focus:ring-2 transition-all duration-300 ease-in-out 
+                        border-white/10 focus:ring-blue-400/80 
+                        hover:border-blue-400/40 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]"
+        type="submit" :disabled="isLoading">
         {{ isLoading ? 'Connexion en cours...' : 'Se connecter' }}
       </button>
+
     </form>
   </div>
+
 </template>

@@ -1,13 +1,3 @@
-<template>
-
-    <div :class="colorText + ' ' + minHeight" class="font-terminal text-center flex items-baseline gap-1"
-        :style="width < 768 ? { fontSize: `${size * 0.8}px` } : { fontSize: `${size}px` }"> {{ displayText }}
-        <span v-if="displayText.length > 0" :class="colorCursor" class="h-px animate-pulse" :style="{ width: `${size / 2}px` }"></span>
-    </div>
-
-
-</template>
-
 <script setup>
 
 const props = defineProps({
@@ -71,3 +61,14 @@ onMounted(() => {
     typeText()
 })
 </script>
+
+<template>
+
+    <div :class="colorText + ' ' + minHeight" class="font-terminal text-center flex items-baseline gap-1"
+        :style="width < 768 ? { fontSize: `${size * 0.8}px` } : { fontSize: `${size}px` }"> {{ displayText }}
+        <span v-if="displayText.length > 0" :class="colorCursor" class="h-px animate-pulse" :style="{ width: `${size / 2}px` }"></span>
+    </div>
+
+
+</template>
+

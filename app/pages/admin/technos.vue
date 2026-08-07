@@ -7,6 +7,5 @@ definePageMeta({
 </script>
 
 <template>
-   <h1>Welcome to your dashboard</h1>
-    
+    <h1>Gestion des techno</h1>
 </template>
