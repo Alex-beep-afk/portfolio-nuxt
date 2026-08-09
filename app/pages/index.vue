@@ -1,16 +1,16 @@
 <script setup>
 
 const config = useRuntimeConfig();
+
 //Appel Api pour les projets
 const { projects, fetchProjects } = useProjects();
 await fetchProjects();
 
 // Appel Api pour les technos 
-// TODO: transformer le useFetch en composable et utiliser le useTechnos
 const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos`, {
   server: false,
   headers: {
-    Accept: 'application/ld+json' // On demande le format API Platform
+    Accept: 'application/ld+json'
   }
 })
 
