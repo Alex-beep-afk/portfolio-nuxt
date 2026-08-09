@@ -15,6 +15,7 @@ const { data: techData } = await useFetch(`${config.public.apiBaseUrl}/api/techn
 const technos = computed(() => {
   return techData.value ? techData.value.member : [];
 });
+
 </script>
 
 <template>

@@ -7,7 +7,7 @@ const { projects, fetchProjects } = useProjects();
 await fetchProjects();
 
 // Appel Api pour les technos 
-const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos`, {
+const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos?active=true`, {
   server: false,
   headers: {
     Accept: 'application/ld+json'
