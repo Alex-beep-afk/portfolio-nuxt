@@ -14,10 +14,12 @@ await fetchProjects();
 
 
 <template>
-    <h1>page projets</h1>
-    <ul>
-        <li v-for="project in projects" :key="project.id">
-            {{ project.title }}
-        </li>
-    </ul>
+    <section>
+        <h1>page projets</h1>
+        <ul>
+            <li v-for="project in projects" :key="project.id">
+                {{ project.title }}
+            </li>
+        </ul>
+    </section>
 </template>
