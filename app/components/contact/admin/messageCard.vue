@@ -1,5 +1,15 @@
 <script setup>
 
+const config = useRuntimeConfig();
+const emit = defineEmits(['refreshList']);
+
+const props = defineProps({
+    message: {
+        type: Object,
+        required: true
+    }
+})
+
 const formatDateTime = (dateString) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('fr-FR', {
@@ -11,12 +21,29 @@ const formatDateTime = (dateString) => {
     })
 }
 
-const props = defineProps({
-    message: {
-        type: Object,
-        required: true
+const deleteMessage = async (id) => {
+    const token = useCookie('auth_token');
+    const isConfirmed = confirm("Etes-vous sur de vouloir supprimer ce message ?");
+
+    if (!isConfirmed || !token.value) {
+        return;
     }
-})
+
+    try {
+        const response = await $fetch(`${config.public.apiBaseUrl}/api/message_contacts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/ld+json',
+                Authorization: `Bearer ${token.value}`
+            }
+        })
+        emit('refreshList');
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
 
 </script>
 
@@ -78,19 +105,8 @@ const props = defineProps({
 
         <div class="flex gap-4 mt-2">
 
-
-            <button class="text-blue-500/70 ">
-                <svg class="w-5 h-5 drop-shadow-[0_2px_5px_rgba(248,51,51,1)]" xmlns="http://www.w3.org/2000/svg"
-                    width="1em" height="1em" viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path fill="currentColor"
-                        d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
-                </svg>
-
-            </button>
-
-            <button>
-                <svg class="w-5 h-5 drop-shadow-[0_2px_5px_rgba(248,51,51,1)]" xmlns="http://www.w3.org/2000/svg"
+            <button @click="deleteMessage(message.id)">
+                <svg class="w-10 h-10 drop-shadow-[0_2px_5px_rgba(248,51,51,1)] text-red-500 hover:text-red-100 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg"
                     width="1em" height="1em" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

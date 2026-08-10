@@ -1,11 +1,13 @@
 <script setup>
 
+definePageMeta({
+    layout: 'admin',
+    middleware: ['auth']
+})
+
 const runtimeConfig = useRuntimeConfig();
 const baseUrl = runtimeConfig.public.apiBaseUrl;
 
-definePageMeta({
-    layout: 'admin'
-})
 
 const { data: messagesData, refresh } = await useFetch(`${baseUrl}/api/message_contacts`, {
     headers: {
@@ -26,7 +28,7 @@ const displayMessages = computed(() => {
             des messages</h1>
 
         <div v-if="displayMessages.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ContactAdminMessageCard v-for="message in displayMessages" :key="message.id" :message="message" />
+            <ContactAdminMessageCard v-for="message in displayMessages" :key="message.id" :message="message" @refresh-list="refresh" />
         </div>
         <div v-else>
             <p class="text-center text-gray-500">Aucun message pour le moment.</p>

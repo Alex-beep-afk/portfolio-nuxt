@@ -47,7 +47,8 @@ const toggleActive = async (id) => {
             method: 'PATCH',
             headers: {
                 Accept: 'application/ld+json',
-                'Content-Type': 'application/merge-patch+json'
+                'Content-Type': 'application/merge-patch+json',
+                Authorization: `Bearer ${token.value}`
             },
             body: {
                 active: newValue
