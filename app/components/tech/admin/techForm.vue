@@ -2,6 +2,7 @@
 
 const config = useRuntimeConfig();
 const baseUrl = config.public.apiBaseUrl;
+const token = useCookie('auth_token');
 
 const emit = defineEmits(['refreshList']);
 
@@ -40,6 +41,7 @@ const submitForm = async () => {
             method: 'POST',
             headers: {
                 Accept: 'application/ld+json',
+                Authorization: `Bearer ${token.value}`
             },
             body: formData
         })
@@ -50,7 +52,8 @@ const submitForm = async () => {
                     method: 'POST',
                     headers: {
                         Accept: 'application/ld+json',
-                        'Content-Type': 'application/ld+json'
+                        'Content-Type': 'application/ld+json',
+                        Authorization: `Bearer ${token.value}`
                     },
                     body: {
                         title: form.title,

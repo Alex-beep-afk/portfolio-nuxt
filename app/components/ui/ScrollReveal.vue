@@ -12,7 +12,7 @@ const isVisible = useElementVisibility(target);
 const hasBeenVisible = ref(false);
 
 const shouldShow = computed(() => {
-    if (props.once){
+    if (props.once) {
         return hasBeenVisible.value;
     }
     return isVisible.value;
@@ -29,9 +29,9 @@ watch(isVisible, () => {
 <template>
 
     <div ref="target" class="min-h-[40px] md:min-h-[80px]">
-        <transition name="page" mode="in">
-            <slot v-if="shouldShow" />
-        </transition>
+
+        <slot v-if="shouldShow" />
+
     </div>
 
 </template>

@@ -7,6 +7,7 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 
+
 //Appel Api pour les projets
 const { projects, fetchProjects } = useProjects();
 await fetchProjects();
@@ -17,6 +18,10 @@ await fetchProjects();
 <template>
     <section>
         <h1>page projets</h1>
+        <ProjectAdminProjectForm @refresh-list="fetchProjects(true)"/>
+        
+    
+    
         <ul>
             <li v-for="project in projects" :key="project.id">
                 {{ project.title }}

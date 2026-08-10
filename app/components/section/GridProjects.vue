@@ -29,8 +29,7 @@ const closeModalProject = () => {
     <div class="grid grid-cols-1 grid-rows-auto lg:grid-cols-2 lg:grid-rows-2 gap-20 lg:gap-16 w-full">
 
         <ProjectCard @showProject="openModalProject(project)" v-for="project in projects" :key="project.id"
-            :title="project.title" :description="project.description" :techno="project.techno" :link="project.link"
-            :image="project.coverImage?.contentUrl" />
+            :project="project" />
 
     </div>
 
