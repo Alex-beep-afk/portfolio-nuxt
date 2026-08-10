@@ -16,7 +16,7 @@ const navLinks = [
     },
     {
         label: 'Messages',
-        path: "/admin/messages"
+        path: "/admin/contact"
     }
 ]
 
