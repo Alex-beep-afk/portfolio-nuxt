@@ -22,10 +22,9 @@ await fetchProjects();
         
     
     
-        <ul>
-            <li v-for="project in projects" :key="project.id">
-                {{ project.title }}
-            </li>
-        </ul>
+        <div class="flex flex-row gap-4">
+            <ProjectAdminProjectCard v-for="project in projects" :key="project.id" :project="project" @refresh-list="fetchProjects(true)"/>
+        </div>
+        
     </section>
 </template>
