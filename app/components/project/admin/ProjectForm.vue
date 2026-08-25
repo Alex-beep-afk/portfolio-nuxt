@@ -196,7 +196,7 @@ const handleCoverImageUpload = (event) => {
         <label for="media"
                 class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900/50 hover:bg-gray-800/80 transition-all mt-4">
 
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <div class="flex flex-col items-center justify-center p-5">
                 
                     <svg class="w-8 h-8 mb-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -204,7 +204,7 @@ const handleCoverImageUpload = (event) => {
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
 
-                    <p class="mb-2 text-sm text-gray-300">Cliquez pour uploader <span class="font-bold text-blue-500">la galerie (plusieurs images)</span></p>
+                    <p class="mb-2 text-sm text-gray-300 text-center">Cliquez pour uploader <span class="font-bold text-blue-500">la galerie (plusieurs images)</span></p>
                     
                     <p v-if="form.media && form.media.length > 0" class="text-green-400 font-bold mt-2">
                         Sélectionné : {{ form.media.length }} fichier(s)

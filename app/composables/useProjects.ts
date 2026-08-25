@@ -11,7 +11,7 @@ export const useProjects = () => {
 
     try {
       // On utilise $fetch car on est dans une méthode appelée manuellement
-      const responseData = await $fetch(`${config.public.apiBaseUrl}/api/projects`, {
+      const responseData = await $fetch(`${config.public.apiBaseUrl}/api/projects?active=true`, {
         headers: {
           Accept: 'application/ld+json'
         }

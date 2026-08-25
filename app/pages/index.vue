@@ -121,7 +121,9 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     </section>
 
     <section
-      class="flex flex-col md:flex-row items-center justify-between px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
+      class="flex flex-col 
+      md:flex-row items-center justify-between 
+      px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
 
       <div class="flex flex-col items-center md:items-start gap-4 w-full md:w-1/2">
         <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>

@@ -285,15 +285,23 @@ onUnmounted(() => {
                     <div class="flex flex-col items-center gap-8 ">
                         <div
                             class="flex flex-col items-center p-4 rounded-md border-2 border-white/20 avatar-glow w-full min-h-[120px]">
-                            <UiTerminalText :text="diplome.title" size="24"></UiTerminalText>
-                            <p>{{ diplome.date }}</p>
-                            <p>{{ diplome.location }}</p>
+                            <UiTerminalText :text="diplome.title" size="24" speed=50></UiTerminalText>
+                            <p class="text-sm text-slate-400">{{ diplome.date }}</p>
+                            <p class="text-sm text-slate-400">{{ diplome.location }}</p>
                         </div>
                         <div v-if="diplome.id !== (friseData.diplomes.length - 1)" class="h-[100px] w-[2px] bg-white">
                         </div>
                     </div>
                 </UiScrollReveal>
-                <UiBadgeSecondary label="X" @click="friseState = ''"></UiBadgeSecondary>
+                <div class="flex items-center gap-2 text-blue-500 font-bold md:text-xl text-sm cursor-pointer text-center border border-slate-400/50 rounded-full px-5 py-2 bg-black 
+                    hover:scale-110 hover:text-white transition-all duration-500 ease-in-out" @click="friseState = ''">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                        <path d="M0 0h16v16H0z" fill="none" />
+                        <path fill="currentColor"
+                            d="M12.293 2.293a1 1 0 0 1 1.414 1.414L9.414 8l4.293 4.293a1 1 0 1 1-1.414 1.414L8 9.414l-4.293 4.293a1 1 0 1 1-1.414-1.414L6.586 8L2.293 3.707a1 1 0 1 1 1.414-1.414L8 6.586z" />
+                    </svg>
+                    <span>Fermer</span>
+                </div>
             </div>
 
 
@@ -304,27 +312,31 @@ onUnmounted(() => {
                     <div class="flex flex-col items-center gap-8 ">
                         <div
                             class="flex flex-col items-center p-4 rounded-md border-2 border-white/20 avatar-glow w-full min-h-[120px] ">
-                            <UiTerminalText :text="experience.title" size="24"></UiTerminalText>
-                            <p>{{ experience.date }}</p>
-                            <p>{{ experience.location }}</p>
+                            <UiTerminalText :text="experience.title" size="24" speed=50></UiTerminalText>
+                            <p class="text-sm text-slate-400">{{ experience.date }}</p>
+                            <p class="text-sm text-slate-400">{{ experience.location }}</p>
                         </div>
                         <div v-if="experience.id !== (friseData.experiences.length - 1)"
                             class="h-[100px] w-[2px] bg-white"></div>
                     </div>
                 </UiScrollReveal>
-                <UiBadgeSecondary label="X" @click="friseState = ''"></UiBadgeSecondary>
+                <div class="flex items-center gap-2 text-blue-500 font-bold md:text-xl text-sm cursor-pointer text-center border border-slate-400/50 rounded-full px-5 py-2 bg-black 
+                    hover:scale-110 hover:text-white transition-all duration-500 ease-in-out" @click="friseState = ''">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                        <path d="M0 0h16v16H0z" fill="none" />
+                        <path fill="currentColor"
+                            d="M12.293 2.293a1 1 0 0 1 1.414 1.414L9.414 8l4.293 4.293a1 1 0 1 1-1.414 1.414L8 9.414l-4.293 4.293a1 1 0 1 1-1.414-1.414L6.586 8L2.293 3.707a1 1 0 1 1 1.414-1.414L8 6.586z" />
+                    </svg>
+                    <span>Fermer</span>
+                </div>
             </div>
 
             <div class="w-full h-[1px] bg-white mt-4 mb-8"></div>
 
             <div class="flex gap-6 justify-center my-8">
-                <UiButtonPrimary 
-                label="Télécharger mon CV" 
-                to="/medias/documents/CV_072026.pdf"
-                download="CV_Alexandre_Prigent.pdf" 
-                target="_blank" 
-                external />
-                <UiButtonSecondary label="Me contacter" to="/contact"/>
+                <UiButtonPrimary label="Télécharger mon CV" to="/medias/documents/CV_072026.pdf"
+                    download="CV_Alexandre_Prigent.pdf" target="_blank" external />
+                <UiButtonSecondary label="Me contacter" to="/contact" />
             </div>
 
 
