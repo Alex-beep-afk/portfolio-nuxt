@@ -49,14 +49,14 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
         </UiScrollReveal>
 
         <h1 class="text-center text-xl font-bold text-white font-heading xl:text-6xl">Création <span
-            class="text-blue-500">d'experiences</span> digitales
-          avec précision .</h1>
+            class="text-blue-500">d'expériences</span> digitales
+          avec précision</h1>
 
-        <p class="text-blue-300 font-semibold text-center xl:text-xl">Devellopeur junior spécialisé en
+        <p class="text-blue-300 font-semibold text-center xl:text-xl">Dévelopeur junior spécialisé en
           développement web et
-          mobile. Passionné par les
+          web mobile. Passionné par les
           nouvelles technologies et l'innovation, je cherche activement une alternance afin de developper mes
-          compétences ,
+          compétences,
           contribuer à des projets innovants et apprendre de nouvelles technologies. Je suis également un joueur
           passionné et un grand amateur de café, deux passions
           qui influencent mon approche créative
@@ -89,12 +89,12 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
             <UiTerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
           </UiScrollReveal>
 
-          <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Decouvrez mes differents projets et
-            mes experiences
+          <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Découvrez mes différents projets et
+            mes expériences
             professionnelles.</p>
         </div>
 
-        <UiButtonPrimary label="Voir tout mes projets" to="/projects" />
+        <UiButtonPrimary label="Voir tous mes projets" to="/projects" />
 
       </div>
 
@@ -108,8 +108,8 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
         <UiScrollReveal>
           <UiTerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
         </UiScrollReveal>
-        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Decouvrez mes differents projets et mes
-          experiences
+        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Découvrez mes différents projets et mes
+          expériences
           professionnelles.</p>
       </div>
 
@@ -126,10 +126,9 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
 
       <div class="flex flex-col items-center md:items-start gap-4 w-full md:w-1/2">
-        <p class="text-m font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
-        <p class="text-white font-semibold text-xl text-center md:text-start">Actuellement en reconversion
-          professionnelle, et déjà titulaire d'un
-          diplome en développement web et web mobile, je suis à la recherche
+        <p class="text-2xl font-semibold text-slate-200/50">ABOUT <span class="text-blue-500">ME</span></p>
+        <p class="text-white font-semibold text-lg text-center md:text-start">Actuellement titulaire d'un
+          diplôme en développement web et web mobile, je suis à la recherche
           d'une alternance pour approfondir mes compétences et acquérir de nouvelles connaissances.</p>
       </div>
 
@@ -140,8 +139,8 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     <section
       class="flex flex-col md:flex-row justify-between items-center px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
       <div class="flex flex-col items-center md:items-start gap-4 w-full md:w-1/2">
-        <p class="text-m font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
-        <p class="text-white font-semibold text-3xl lg:text-5xl font-heading">Travaillons ensemble !</p>
+        <p class="text-2xl font-semibold text-slate-200/50">LET'S <span class="text-blue-500">CONNECT</span></p>
+        <p class="text-white font-semibold text-3xl lg:text-4xl font-heading">Travaillons ensemble !</p>
 
       </div>
 

@@ -149,7 +149,7 @@ onUnmounted(() => {
                     :colorCursor="'bg-blue-300'" />
                 <h1 class="text-4xl font-heading my-6 text-white text-center drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] xl:text-start">Prêt à rejoindre votre équipe.</h1>
                 <p class="text-blue-300 text-lg text-center xl:text-start">Passionné par la création d'applications web,
-                    je cherche une entreprise pour mon alternance. N'hésitez pas à m'envoyer un message pour que
+                    je recherche une entreprise pour mon alternance. N'hésitez pas à m'envoyer un message pour que
                     l'on puisse discuter de notre future collaboration !</p>
             </div>
 
@@ -158,20 +158,20 @@ onUnmounted(() => {
                 <div class="flex flex-col items-center gap-1 
                         xl:items-start ">
                     <span class="font-bold text-blue-500">Email</span>
-                    <p class="text-white">Alex-test@gmail.com</p>
+                    <a href="mailto:alexandre.prigent@proton.me" class="text-white hover:text-blue-500 transition-colors">alexandre.prigent@proton.me</a>
                 </div>
 
                 <div class="flex flex-col items-center gap-1 
                         xl:items-start ">
                     <span class="font-bold text-blue-500">Basé à</span>
-                    <p class="text-white">Lyon, France</p>
+                    <p class="text-white">Lyon / Romans-sur-Isère, France</p>
                 </div>
                 <div class="flex flex-col items-center gap-2 
                         xl:items-start ">
-                    <span class="font-bold text-blue-500">Mes reseaux</span>
+                    <span class="font-bold text-blue-500">Mes réseaux</span>
                     <div class="flex gap-4">
-                        <UiBadgePrimary to="#" linkText="Github" />
-                        <UiBadgePrimary to="#" linkText="LinkedIn" />
+                        <UiBadgePrimary to="https://github.com/Alex-beep-afk" linkText="Github" />
+                        <UiBadgePrimary to="https://www.linkedin.com/in/prigent-alexandre/" linkText="LinkedIn" />
                     </div>
                 </div>
             </div>

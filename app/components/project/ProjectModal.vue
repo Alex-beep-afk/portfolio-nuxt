@@ -88,7 +88,7 @@
 
                     <div class="flex justify-between gap-10">
                         <UiButtonPrimary label="Voir le projet en ligne" :to="project.link" class="text-center" />
-                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.github" class="text-center" />
+                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.githubLink" class="text-center" />
                     </div>
 
                 </div>

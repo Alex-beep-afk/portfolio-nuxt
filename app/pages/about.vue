@@ -43,15 +43,15 @@ const friseData = {
     diplomes: [
         {
             id: 0,
-            title: 'CAP ébénisterie',
-            date: '2009 - 2011',
-            location: 'Lycée de l\'Elorn - Landerneau',
+            title: 'Titre professionnel - Développeur web et web mobile',
+            date: '2024 - 2025',
+            location: 'CCI - Lyon 5e',
         },
         {
             id: 1,
-            title: 'CAP Menuisier installateur',
-            date: '2011 - 2012',
-            location: 'Compagnons du devoir - Rennes',
+            title: 'Baccalauréat Général - Candidat libre',
+            date: '2015 - 2016',
+            location: 'UBO - Brest',
         },
         {
             id: 2,
@@ -61,15 +61,15 @@ const friseData = {
         },
         {
             id: 3,
-            title: 'Baccalauréat Général',
-            date: '2015 - 2016',
-            location: 'UBO - Brest',
+            title: 'CAP Menuisier installateur',
+            date: '2011 - 2012',
+            location: 'Compagnons du devoir - Rennes',
         },
         {
             id: 4,
-            title: 'TP - Developpeur web et web mobile',
-            date: '2024 - 2025',
-            location: 'CCI - Lyon 5e',
+            title: 'CAP Ebénisterie',
+            date: '2009 - 2011',
+            location: 'Lycée de l\'Elorn - Landerneau',
         }
     ],
     experiences: [
@@ -182,7 +182,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class="min-h-screen gap-8 flex flex-col items-center pt-32 px-8 lg:px-16 bg-scroll bg-center"
+    <main class="min-h-screen gap-8 flex flex-col items-center pt-32 lg:pt-40 px-8 lg:px-16 bg-scroll bg-center"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%) no-repeat center center fixed' }">
 
         <section class="flex flex-col items-center p-16 gap-8 rounded-2xl 
@@ -193,7 +193,7 @@ onUnmounted(() => {
                 <img class="max-w-full rounded-2xl" src="/medias/images/Alex.webp" alt="Avatar">
             </div>
 
-            <div class="flex min-h-[250px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y"
+            <div class="min-h-[250px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y"
                 @pointerdown="onPointerDown" @pointerup="onPointerUp">
 
                 <transition name="slide" mode="out-in">
@@ -201,10 +201,11 @@ onUnmounted(() => {
                         class="flex flex-col items-center justify-center text-white w-full">
                         <UiTerminalText :text="'Informations Générales'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg min-h-[170px]">
+                        <ul class="text-2xl min-h-[170px]">
                             <li><span class="text-blue-500 font-semibold">Nom :</span> Prigent</li>
                             <li><span class="text-blue-500 font-semibold">Prénom :</span> Alexandre</li>
-                            <li><span class="text-blue-500 font-semibold">Localisation :</span> Roman-sur-Isère</li>
+                            <li><span class="text-blue-500 font-semibold">Localisation : </span> Lyon /Romans-sur-Isère
+                            </li>
                             <li><span class="text-blue-500 font-semibold">Métier :</span> Développeur web</li>
                         </ul>
                     </div>
@@ -213,13 +214,13 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full ">
                         <UiTerminalText :text="'ToolBox'" :size="32" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg min-h-[170px]">
-                            <li><span class="text-blue-500 font-semibold">Symfony :</span> ⭐⭐⭐</li>
-                            <li><span class="text-blue-500 font-semibold">Vue.js :</span> ⭐⭐⭐</li>
-                            <li><span class="text-blue-500 font-semibold">Nuxt.js :</span> ⭐⭐</li>
-                            <li><span class="text-blue-500 font-semibold">PHP :</span> ⭐⭐⭐</li>
-                            <li><span class="text-blue-500 font-semibold">SQL :</span> ⭐⭐</li>
-                            <li><span class="text-blue-500 font-semibold">Tailwind :</span> ⭐⭐⭐</li>
+                        <ul class="text-2xl min-h-[170px]">
+                            <li><span class="text-blue-500 font-semibold">⭐ Symfony</span></li>
+                            <li><span class="text-blue-500 font-semibold">⭐ Vue.js</span></li>
+                            <li><span class="text-blue-500 font-semibold">⭐ Nuxt.js</span></li>
+                            <li><span class="text-blue-500 font-semibold">⭐ PHP</span></li>
+                            <li><span class="text-blue-500 font-semibold">⭐ SQL</span></li>
+                            <li><span class="text-blue-500 font-semibold">⭐ Tailwind</span></li>
 
                         </ul>
                     </div>
@@ -228,11 +229,11 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full">
                         <UiTerminalText :text="'Centres d\'intérêts'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-lg min-h-[170px]">
-                            <li><span class="text-blue-500 font-semibold">Jeux vidéo</span></li>
-                            <li><span class="text-blue-500 font-semibold">Randonnée</span></li>
-                            <li><span class="text-blue-500 font-semibold">Bricolage</span></li>
-                            <li><span class="text-blue-500 font-semibold">Cuisine</span></li>
+                        <ul class="text-2xl min-h-[170px]">
+                            <li><span class="text-blue-500 font-semibold">🎮 Jeux vidéos</span></li>
+                            <li><span class="text-blue-500 font-semibold">🚶🏾‍♂️‍➡️ Randonnée</span></li>
+                            <li><span class="text-blue-500 font-semibold">🔨 Bricolage</span></li>
+                            <li><span class="text-blue-500 font-semibold">🍽️ Cuisine</span></li>
                         </ul>
                     </div>
                 </transition>
@@ -251,20 +252,42 @@ onUnmounted(() => {
                     class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></span>
             </div>
         </section>
-        <section class="flex flex-col py-8">
 
-            <h2 class="text-2xl text-center text-white font-heading">Qui suis-je ?</h2>
+        <section class="flex flex-col py-8 w-full md:w-1/2 mx-auto">
+
+            <h2 class="text-2xl text-center text-white font-heading mb-4">Qui suis-je ?</h2>
             <div class="w-full h-[1px] bg-white my-4"></div>
-            <p class="text-white text-lg text-center">
-                Phasellus tincidunt ligula sed ornare gravida. Sed consectetur sit amet mi quis pretium. Aenean
-                accumsan dignissim erat. Ut non felis ut mi pretium egestas et vitae lectus. Aliquam sed
-                scelerisque metus, quis pretium odio. Integer ultricies est non odio dignissim, quis laoreet elit
-                ullamcorper. Curabitur dapibus tempus massa, et pretium sapien lacinia et. Duis sed nulla auctor ipsum
-                maximus iaculis ut vel nunc. Phasellus vestibulum, justo quis semper viverra, sapien nibh viverra
-                felis, quis aliquet elit diam et elit. Aliquam bibendum ligula nec libero gravida, a mattis nunc
-                ultrices. Vivamus ac libero et sem sodales rutrum ac sed mi. Aliquam erat volutpat. Maecenas leo sem,
-                porta vel feugiat sed, eleifend ac ante. Morbi quis imperdiet enim, sit amet lacinia nunc.
-            </p>
+            <div class="text-white text-2xl text-center lg:text-justify ">
+                <span class="text-blue-500 font-bold flex justify-center my-4">Hello World !</span>
+
+                <p class="mb-4">
+                    Moi c'est Alexandre, un profil technique passionné par la création sous toutes ses formes. Que ce
+                    soit
+                    en
+                    tapant du code sur mon IDE pour concevoir une application, en développant sur Godot
+                    Engine, ou encore à travers le bricolage et la cuisine au quotidien, <span
+                        class="text-blue-500 font-bold">j'aime
+                        concevoir des projets de
+                        A à Z.</span>
+                </p>
+
+                <p class="mb-4">
+                    Après l'obtention de mon titre de Développeur Web / Web Mobile, mon objectif est de pouvoir
+                    concevoir des solutions complètes et robustes de bout en bout. Je cherche actuellement une
+                    entreprise pour m'accueillir en alternance, que ce soit pour approfondir l'ingénierie logicielle en
+                    tant que futur <span class="text-blue-500 font-bold">Concepteur Développeur d'Applications
+                        (CDA)</span>, ou pour maîtriser le socle et la
+                    sécurité de nos systèmes en tant qu'<span class="text-blue-500 font-bold">Administrateur
+                        d'Infrastructures Sécurisées (AIS)</span>.
+                </p>
+
+                <p>
+                    Et quand je
+                    ne suis pas devant un écran, c'est généralement que je suis parti en randonnée !
+                </p>
+
+
+            </div>
 
         </section>
 
@@ -273,9 +296,9 @@ onUnmounted(() => {
             <div class="w-full h-[1px] bg-white my-4"></div>
 
             <div class="flex justify-center items-center gap-8 my-4 ">
-                <UiBadgeSecondary label="Diplomes" @click="friseState = 'diplomes'"
+                <UiBadgeSecondary label="Diplômes" @click="friseState = 'diplomes'"
                     :isActive="friseState === 'diplomes'"></UiBadgeSecondary>
-                <UiBadgeSecondary label="Experiences" @click="friseState = 'experiences'"
+                <UiBadgeSecondary label="Expériences" @click="friseState = 'experiences'"
                     :isActive="friseState === 'experiences'"></UiBadgeSecondary>
             </div>
 
