@@ -36,7 +36,7 @@ const emit = defineEmits(['showProject'])
       <h3 class="text-blue-500 text-3xl font-bold text-center md:text-left">{{ project.title }}</h3>
       <p class="text-blue-300 font-semibold text-lg text-center md:text-left">{{ project.description.length >= 90 ? project.description.slice(0, 90) + '...' : project.description }}</p>
 
-      <div class="flex gap-5">
+      <div class="flex flex-wrap gap-5">
         <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
       </div>
     </div>

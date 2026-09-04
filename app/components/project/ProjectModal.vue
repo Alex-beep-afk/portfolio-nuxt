@@ -1,19 +1,19 @@
 <template>
-    <!-- Teleport déplace ce code directement dans la balise <body> -->
+   
     <Teleport to="body">
-        <!-- Le fond noir semi-transparent -->
+       
         <div class="fixed inset-0 bg-black/80 z-[100] flex justify-center items-center p-4 " @click="$emit('close')">
 
-            <!-- La boite de la modale -->
+            
             <div class="bg-gray-900 border border-slate-400/30 rounded-2xl max-w-2xl max-h-[80vh] w-full relative overflow-y-scroll no-scrollbar"
                 @click.stop ref="scrollContainer">
-                <!-- Image de couverture du projet -->
+                
                 <div class="w-full">
 
                     <img :src="`${$config.public.apiBaseUrl}${project.coverImage?.contentUrl}`" :alt="project.title"
-                        class="object-cover">
+                        class="object-cover mx-auto">
                 </div>
-                <!-- Description du projet -->
+                
                 <div class="p-8">
                     <div>
                         <h3 class="text-3xl text-white font-bold mb-4">{{ project.title }}</h3>
@@ -75,11 +75,11 @@
                         </div>
                     </div>
 
-                    <div class=" border border-slate-400/30 mb-10 mt-10"></div>
+                    <div class="border border-slate-400/30 mb-10 mt-10"></div>
 
                     <div>
                         <h3 class="text-white font-semibold text-3xl mb-10">Technologies utilisées</h3>
-                        <div class="flex gap-4">
+                        <div class="flex flex-wrap gap-4">
                             <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
                         </div>
                     </div>
