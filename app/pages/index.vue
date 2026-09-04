@@ -36,7 +36,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
   <main class="min-h-screen bg-gradient-to-r from-black from-[20%] via-black via-[50%] to-transparent">
     <video autoplay loop muted playsinline class="absolute w-full h-full object-cover -z-10">
 
-      <source :src="'/medias/backgroundFolio.mp4'" type="video/mp4">
+      <source :src="'/medias/BackgroundFolio.mp4'" type="video/mp4">
     </video>
 
 
