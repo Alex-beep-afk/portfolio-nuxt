@@ -2,6 +2,8 @@
 
 const config = useRuntimeConfig();
 
+const token = useCookie('auth_token');
+
 const emit = defineEmits(['refreshList']);
 
 const props = defineProps({

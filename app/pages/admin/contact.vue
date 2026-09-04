@@ -7,11 +7,13 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig();
 const baseUrl = runtimeConfig.public.apiBaseUrl;
+const token = useCookie('auth_token');
 
 
 const { data: messagesData, refresh } = await useFetch(`${baseUrl}/api/message_contacts`, {
     headers: {
-        accept: 'application/ld+json'
+        accept: 'application/ld+json',
+        Authorization: `Bearer ${token.value}`
     },
     server: false
 });

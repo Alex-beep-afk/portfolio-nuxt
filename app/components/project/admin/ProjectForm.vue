@@ -129,6 +129,7 @@ const postProject = async () => {
     }
     catch (error) {
         console.error('Erreur lors du telechargement des medias : ', error);
+        errorMessage.value = "Une erreur est survenue, veuillez réessayer.";
     }
     finally {
         isSubmitting.value = false;
