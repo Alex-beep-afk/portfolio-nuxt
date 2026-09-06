@@ -84,11 +84,11 @@
                         </div>
                     </div>
 
-                    <div class=" border border-slate-400/30 mb-10 mt-10"></div>
+                    <div class="border border-slate-400/30 mb-10 mt-10"></div>
 
                     <div class="flex justify-between gap-10">
-                        <UiButtonPrimary label="Voir le projet en ligne" :to="project.link" class="text-center" />
-                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.githubLink" class="text-center" />
+                        <UiButtonPrimary label="Voir le projet en ligne" :to="project.link" class="text-center" :disabled="!project.link" :class="!project.link ? 'opacity-50 cursor-not-allowed' : ''"/>
+                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.githubLink" class="text-center" :disabled="!project.githubLink" :class="!project.githubLink ? 'opacity-50 cursor-not-allowed' : ''"/>
                     </div>
 
                 </div>
@@ -113,7 +113,7 @@
 </template>
 
 <script setup>
-// La modale a besoin de savoir quel projet afficher
+
 const props = defineProps({
     project: {
         type: Object,
@@ -121,7 +121,7 @@ const props = defineProps({
     }
 })
 
-// La modale a besoin de pouvoir dire "ferme-moi"
+
 defineEmits(['close'])
 
 const translateXgallery = ref(0);

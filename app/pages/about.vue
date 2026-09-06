@@ -357,7 +357,7 @@ onUnmounted(() => {
             <div class="w-full h-[1px] bg-white mt-4 mb-8"></div>
 
             <div class="flex gap-6 justify-center my-8">
-                <UiButtonPrimary label="Télécharger mon CV" to="/medias/documents/CV_072026.pdf"
+                <UiButtonPrimary label="Télécharger mon CV" to="/medias/documents/CV_092026.pdf"
                     download="CV_Alexandre_Prigent.pdf" target="_blank" external />
                 <UiButtonSecondary label="Me contacter" to="/contact" />
             </div>
