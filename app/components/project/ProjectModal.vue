@@ -16,14 +16,14 @@
                 
                 <div class="p-8">
                     <div>
-                        <h3 class="text-3xl text-white font-bold mb-4">{{ project.title }}</h3>
+                        <h3 class="text-3xl text-white font-bold mb-4 text-center">{{ project.title }}</h3>
                         <p class="text-blue-300">{{ project.description }}</p>
                     </div>
 
                     <div class=" border border-slate-400/30 mb-10 mt-10"></div>
 
                     <!-- Difficultés rencontrées -->
-                    <h3 class="text-3xl text-white font-bold mb-4">Difficultés rencontrées</h3>
+                    <h3 class="text-3xl text-white font-bold mb-4 text-center">Difficultés rencontrées</h3>
                     <p class="text-blue-300">
                         {{ project.difficulties }}
 
@@ -69,7 +69,7 @@
                             :style="{ transform: `translateX(${translateXgallery}px)` }">
                             <div class="min-w-[240px] h-[160px] cursor-pointer  hover:scale-[1.3]  hover:z-50 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all duration-500 relative z-10 overflow-hidden "
                                 v-for="image in project.gallery" :key="image.id">
-                                <img :src="`${$config.public.apiBaseUrl}${image.contentUrl}`" :alt="image.title"
+                                <img :src="`${$config.public.apiBaseUrl}${image.contentUrl}`" :alt="image.title" 
                                     class="w-full h-full object-cover grayscale hover:grayscale-0">
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                     <div class="border border-slate-400/30 mb-10 mt-10"></div>
 
                     <div>
-                        <h3 class="text-white font-semibold text-3xl mb-10">Technologies utilisées</h3>
+                        <h3 class="text-white font-semibold text-3xl mb-10 text-center">Technologies utilisées</h3>
                         <div class="flex flex-wrap gap-4">
                             <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
                         </div>

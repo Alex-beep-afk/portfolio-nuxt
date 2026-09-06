@@ -201,7 +201,7 @@ onUnmounted(() => {
                         class="flex flex-col items-center justify-center text-white w-full">
                         <UiTerminalText :text="'Informations Générales'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-2xl min-h-[170px]">
+                        <ul class="text-2xl min-h-[200px] flex flex-col justify-between">
                             <li><span class="text-blue-500 font-semibold">Nom :</span> Prigent</li>
                             <li><span class="text-blue-500 font-semibold">Prénom :</span> Alexandre</li>
                             <li><span class="text-blue-500 font-semibold">Localisation : </span> Lyon /Romans-sur-Isère
@@ -214,7 +214,7 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full ">
                         <UiTerminalText :text="'ToolBox'" :size="32" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-2xl min-h-[170px]">
+                        <ul class="text-2xl min-h-[200px] flex flex-col justify-between">
                             <li><span class="text-blue-500 font-semibold">⭐ Symfony</span></li>
                             <li><span class="text-blue-500 font-semibold">⭐ Vue.js</span></li>
                             <li><span class="text-blue-500 font-semibold">⭐ Nuxt.js</span></li>
@@ -229,7 +229,7 @@ onUnmounted(() => {
                         class="text-white flex flex-col items-center justify-center w-full">
                         <UiTerminalText :text="'Centres d\'intérêts'" :size="32" :speed="100" />
                         <div class="w-full h-[1px] bg-white my-4"></div>
-                        <ul class="text-2xl min-h-[170px]">
+                        <ul class="text-2xl min-h-[200px] flex flex-col justify-between">
                             <li><span class="text-blue-500 font-semibold">🎮 Jeux vidéos</span></li>
                             <li><span class="text-blue-500 font-semibold">🚶🏾‍♂️‍➡️ Randonnée</span></li>
                             <li><span class="text-blue-500 font-semibold">🔨 Bricolage</span></li>

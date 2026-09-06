@@ -74,7 +74,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       </div>
     </section>
 
-    <section class="p-12 lg:p-16 bg-black flex flex-col gap-16 relative mb-16">
+    <section class="p-12 lg:p-16 bg-black flex flex-col gap-16 relative">
 
       <div class="h-16 bg-gradient-to-b from-transparent to-black w-full absolute right-0 -top-16">
       </div>
@@ -86,31 +86,32 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
                     lg:items-start ">
 
           <UiScrollReveal>
-            <UiTerminalText text=" <!-- Mon travail -->" :speed="100" :size="52" />
+            <UiTerminalText text=" <!-- <MesRealisations/> -->" :speed="100" :size="52" />
           </UiScrollReveal>
 
-          <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Découvrez mes différents projets et
-            mes expériences
-            professionnelles.</p>
+          <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Exploration de ma stack technique à
+            travers une sélection d'applications web et de sites vitrines.</p>
         </div>
 
-        <UiButtonPrimary label="Voir tous mes projets" to="/projects" />
+
 
       </div>
 
       <SectionGridProjects :projects="displayedProjects" />
 
-
+      <div class="flex justify-center mt-8">
+        <UiButtonPrimary label="Voir tous mes projets" to="/projects" />
+      </div>
     </section>
 
     <section class="bg-black border-y border-slate-400/30 p-12 lg:px-16 flex flex-col gap-16 ">
       <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
         <UiScrollReveal>
-          <UiTerminalText text="/* Ma toolbox */" :speed="100" :size="52" />
+          <UiTerminalText text="/* var(--ma-toolbox) */" :speed="100" :size="52" />
         </UiScrollReveal>
-        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">Découvrez mes différents projets et mes
-          expériences
-          professionnelles.</p>
+        <p class="text-blue-300 font-semibold text-center md:text-start text-lg">De l'intégration front-end fluide avec
+          Tailwind CSS à la logique back-end robuste sous Symfony, voici les technologies qui constituent mon
+          environnement de développement.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
@@ -120,8 +121,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       </div>
     </section>
 
-    <section
-      class="flex flex-col 
+    <section class="flex flex-col 
       md:flex-row items-center justify-between 
       px-8 py-16  bg-black border-b border-slate-400/30 gap-10 lg:px-16 lg:py-32">
 

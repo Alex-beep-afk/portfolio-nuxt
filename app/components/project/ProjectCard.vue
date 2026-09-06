@@ -1,6 +1,4 @@
 <script setup>
-// defineProps est la fonction qui permet de dire : 
-// "Ce composant s'attend à recevoir ces données de l'extérieur"
 const props = defineProps({
   project: Object,
   required: true,
@@ -33,8 +31,8 @@ const emit = defineEmits(['showProject'])
     <div class="w-full h-48 md:h-96 relative z-20"></div>
 
     <div class="flex flex-col justify-between items-center gap-5 p-8 relative z-20">
-      <h3 class="text-blue-500 text-3xl font-bold text-center md:text-left">{{ project.title }}</h3>
-      <p class="text-blue-300 font-semibold text-lg text-center md:text-left">{{ project.description.length >= 90 ? project.description.slice(0, 90) + '...' : project.description }}</p>
+      <h3 class="bg-black/70 p-5 rounded-xl text-blue-500 text-3xl font-bold text-center border border-blue-500 backdrop-blur-xl w-full">{{ project.title }}</h3>
+      <p class="text-blue-300 font-semibold text-lg text-center md:text-left">{{ project.description.length >= 90 ? project.description.slice(0, 200) + '...' : project.description }}</p>
 
       <div class="flex flex-wrap gap-5">
         <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
