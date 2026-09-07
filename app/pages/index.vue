@@ -45,7 +45,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
       <div class="flex flex-col items-center gap-10 h-full justify-center xl:w-3/5 xl:gap-10">
 
         <UiScrollReveal>
-          <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="100" :size="24" />
+          <UiTerminalText text="// Bienvenue sur mon portfolio !" :speed="100" :size="32" />
         </UiScrollReveal>
 
         <h1 class="text-center text-xl font-bold text-white font-heading xl:text-6xl">Création <span
@@ -86,7 +86,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
                     lg:items-start ">
 
           <UiScrollReveal>
-            <UiTerminalText text=" <!-- <MesRealisations/> -->" :speed="100" :size="52" />
+            <UiTerminalText text=" <!-- <MesRealisations/> -->" :speed="100" :size="32" />
           </UiScrollReveal>
 
           <p class="text-blue-300 font-semibold text-lg text-center lg:text-start">Exploration de ma stack technique à
@@ -107,7 +107,7 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
     <section class="bg-black border-y border-slate-400/30 p-12 lg:px-16 flex flex-col gap-16 ">
       <div class="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
         <UiScrollReveal>
-          <UiTerminalText text="/* var(--ma-toolbox) */" :speed="100" :size="52" />
+          <UiTerminalText text="/* var(--ma-toolbox) */" :speed="100" :size="32" />
         </UiScrollReveal>
         <p class="text-blue-300 font-semibold text-center md:text-start text-lg">De l'intégration front-end fluide avec
           Tailwind CSS à la logique back-end robuste sous Symfony, voici les technologies qui constituent mon

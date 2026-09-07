@@ -11,8 +11,10 @@ const token = useCookie('auth_token');
 
 const projectId = route.params.id;
 const project = ref(null);
+const { projects, fetchProjects } = useProjects();
 
 const isSubmitting = ref(false);
+
 const successMessage = ref('');
 const errorMessage = ref('');
 
@@ -126,9 +128,19 @@ const updateProject = async () => {
         });
 
         successMessage.value = "Projet modifié avec succès !";
+
         project.value = response;
         form.coverImage = '';
         form.media = [];
+
+        await fetchProjects(true);
+
+        setTimeout(() => {
+            if (successMessage.value) successMessage.value = '';
+            if (errorMessage.value) errorMessage.value = '';
+        }, 3000);
+
+        
 
     } catch (error) {
         console.error('Erreur lors de la modification : ', error);
