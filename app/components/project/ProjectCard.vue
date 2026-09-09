@@ -9,35 +9,46 @@ const emit = defineEmits(['showProject'])
 
 
 <template>
-  <div @click="emit('showProject')" class="group w-full cursor-pointer h-full 
-  flex flex-col justify-between gap-5 border border-slate-400/50 
-  rounded-3xl overflow-hidden relative hover:border-blue-500
-  hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)] 
-  transition-all duration-500 ease-in-out ">
+  <article
+    @click="emit('showProject')"
+    class="group relative w-full h-[420px] sm:h-[460px] cursor-pointer rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/60 shadow-[0_0_30px_-5px_rgba(59,130,246,0.15)] hover:shadow-[0_0_35px_-5px_rgba(59,130,246,0.45)] transition-all duration-500 ease-out flex flex-col justify-end"
+  >
+    
+    <div
+      :style="{ backgroundImage: project?.coverImage?.contentUrl ? `url(${$config.public.apiBaseUrl}${project.coverImage.contentUrl})` : 'url(/medias/images/bg-default.png)' }"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-black transition-all duration-700 ease-out filter lg:grayscale lg:group-hover:grayscale-0 group-hover:scale-105 z-0"
+    ></div>
 
-    <div :style="{backgroundImage: project.coverImage.contentUrl ? `url(${$config.public.apiBaseUrl}${project.coverImage.contentUrl})` : 'url(/medias/images/bg-default.png)'}" class="absolute inset-0 
-      bg-cover bg-center bg-no-repeat bg-black
-      transition-all duration-700 ease-in-out filter lg:grayscale lg:group-hover:grayscale-0 group-hover:scale-110 z-0
-      "></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black via-black/85 via-50% to-transparent z-10 pointer-events-none"
+    ></div>
 
-    <div class="absolute -inset-[2px]  backdrop-blur-lg 
-      [-webkit-mask-image:linear-gradient(to_bottom,transparent_40%,black_50%)] 
-      [mask-image:linear-gradient(to_bottom,transparent_40%,black_50%)] 
-      lg:[-webkit-mask-image:linear-gradient(to_bottom,transparent_40%,black_75%)] 
-      lg:[mask-image:linear-gradient(to_bottom,transparent_40%,black_75%)]
-      z-10">
-    </div>
+    
+    <div class="relative z-20 p-5 sm:p-6 flex flex-col gap-3">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-blue-400 transition-colors duration-300">
+          {{ project.title }}
+        </h3>
+        <div class="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
+      </div>
 
-    <div class="w-full h-48 md:h-96 relative z-20"></div>
+      
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-2 sm:line-clamp-3 font-normal">
+        {{ project.description }}
+      </p>
 
-    <div class="flex flex-col justify-between items-center gap-5 p-8 relative z-20">
-      <h3 class="bg-black/70 p-5 rounded-xl text-blue-500 text-xl font-bold text-center border border-blue-500 backdrop-blur-xl w-full lg:text-2xl">{{ project.title }}</h3>
-      <p class="text-blue-300 font-semibold text-lg text-center md:text-left">{{ project.description.length >= 90 ? project.description.slice(0, 100) + '...' : project.description }}</p>
-
-      <div class="flex flex-wrap gap-5">
-        <UiBadgeSecondary v-for="tech in project.techno" :key="tech.id" :label="tech.title" />
+      
+      <div v-if="project.techno && project.techno.length > 0" class="flex flex-wrap gap-2 pt-1">
+        <UiBadgeSecondary
+          v-for="tech in project.techno"
+          :key="tech.id"
+          :label="tech.title"
+        />
       </div>
     </div>
-
-  </div>
+  </article>
 </template>
