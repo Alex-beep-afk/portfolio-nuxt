@@ -182,7 +182,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class="min-h-screen gap-8 flex flex-col items-center pt-32 lg:pt-40 px-8 lg:px-16 bg-scroll bg-center"
+    <main class="min-h-screen gap-8 flex flex-col items-center pt-28 px-8 lg:px-16 bg-scroll bg-center"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%) no-repeat center center fixed' }">
 
         <section class="flex flex-col items-center p-16 gap-8 rounded-2xl 

@@ -137,7 +137,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <main class=" min-h-screen gap-8 flex p-8 mt-24"
+    <main class=" min-h-screen flex p-8"
         :style="{ background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%)' }">
 
         <div class="flex flex-col xl:flex-row xl:gap-20 justify-center items-center mb-10">

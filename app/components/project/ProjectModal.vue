@@ -1,11 +1,37 @@
+<style scoped>
+.modal-enter-active,
+.modal-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    opacity: 0;
+}
+
+.modal-enter-active .modal-content,
+.modal-leave-active .modal-content {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+.modal-enter-from .modal-content,
+.modal-leave-to .modal-content {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+}
+</style>
+
 <template>
    
     <Teleport to="body">
+
+        <transition
+            name="modal"
+        >
        
-        <div class="fixed inset-0 bg-black/80 z-[100] flex justify-center items-center p-4 " @click="$emit('close')">
+        <div v-if="isOpen" class="fixed inset-0 bg-black/80 z-[100] flex justify-center items-center p-4 " @click="$emit('close')">
 
             
-            <div class="bg-gray-900 border border-slate-400/30 rounded-2xl max-w-2xl max-h-[80vh] w-full relative overflow-y-scroll no-scrollbar"
+            <div class=" modal-content bg-gray-900 border border-slate-400/30 rounded-2xl max-w-2xl max-h-[80vh] w-full relative overflow-y-scroll no-scrollbar"
                 @click.stop ref="scrollContainer">
                 
                 <div class="w-full">
@@ -22,7 +48,6 @@
 
                     <div class=" border border-slate-400/30 mb-10 mt-10"></div>
 
-                    <!-- Difficultés rencontrées -->
                     <h3 class="text-3xl text-white font-bold mb-4 text-center">Difficultés rencontrées</h3>
                     <p class="text-blue-300">
                         {{ project.difficulties }}
@@ -31,7 +56,6 @@
 
                     <div class=" border border-slate-400/30 mb-10 mt-10"></div>
 
-                    <!-- Galerie du projet -->
 
                     <div class="flex justify-between mb-8 items-center">
                         <h3 class="text-white font-semibold text-3xl">Galerie</h3>
@@ -108,6 +132,7 @@
                 </div>
             </div>
         </div>
+        </transition>
     </Teleport>
 
 </template>
@@ -117,6 +142,10 @@
 const props = defineProps({
     project: {
         type: Object,
+        required: true
+    },
+    isOpen: {
+        type: Boolean,
         required: true
     }
 })
@@ -154,12 +183,7 @@ const scrollPercentage = computed(() => {
 const scrollDownOneScreen = () => {
     if (scrollContainer.value) {
         
-        // Option 1 : Si votre conteneur a sa propre barre de défilement (comme une modale)
-        // clientHeight correspond à la hauteur visible exacte de cet élément
         const scrollAmount = scrollContainer.value.clientHeight;
-
-        // Option 2 : Si vous voulez vraiment la hauteur de l'écran entier du navigateur (le vrai 100vh)
-        // const scrollAmount = window.innerHeight;
 
         scrollContainer.value.scrollBy({
             top: scrollAmount,

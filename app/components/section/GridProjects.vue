@@ -33,5 +33,10 @@ const closeModalProject = () => {
 
     </div>
 
-    <ProjectModal v-if="isModalOpen" :project="selectedProject" @close="closeModalProject()" />
+    <ProjectModal 
+    v-if="selectedProject" 
+    :is-open="isModalOpen" 
+    :project="selectedProject" 
+    @close="closeModalProject" 
+/>
 </template>

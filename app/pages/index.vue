@@ -52,10 +52,10 @@ const { arrivedState } = useScroll(typeof window !== 'undefined' ? window : null
             class="text-blue-500">d'expériences</span> digitales
           avec précision</h1>
 
-        <p class="text-blue-300 font-semibold text-center xl:text-xl">Dévelopeur junior spécialisé en
+        <p class="text-blue-300 font-semibold text-center xl:text-xl">Développeur junior spécialisé en
           développement web et
           web mobile. Passionné par les
-          nouvelles technologies et l'innovation, je cherche activement une alternance afin de developper mes
+          nouvelles technologies et l'innovation, je cherche activement une alternance afin de développer mes
           compétences,
           contribuer à des projets innovants et apprendre de nouvelles technologies. Je suis également un joueur
           passionné et un grand amateur de café, deux passions

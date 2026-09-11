@@ -1,11 +1,15 @@
 <template>
-    <NuxtLink :to = "to" class=" text-white 
+    <NuxtLink 
+    :to = "to"
+    class="group [&.router-link-exact-active]:text-blue-300 [&.router-link-exact-active_.underline-bar]:w-full [&.router-link-exact-active_.underline-bar]:bg-blue-300
+    text-white 
     relative cursor-pointer 
-    transition-all duration-500 ease-in-out group font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] text-xl hover:text-blue-300">
+    transition-all duration-500 ease-in-out group font-heading drop-shadow-[0_5px_5px_rgba(59,130,246,0.8)] text-xl">
 
         <slot />
 
-       <div class="w-0 h-[2px] 
+       <div class="underline-bar
+       w-0 h-[2px] 
        absolute -bottom-2 
        left-1/2 -translate-x-1/2 
        group-hover:w-full 
