@@ -37,6 +37,12 @@ const emit = defineEmits(['showProject'])
       </div>
 
       
+      <div v-if="project.type || project.category" class="flex gap-2">
+        <UiBadge v-if="project.type" :label="project.type" variant="type" />
+        <UiBadge v-if="project.category" :label="project.category" variant="category" />
+      </div>
+
+      
       <p class="text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-2 sm:line-clamp-3 font-normal">
         {{ project.description }}
       </p>

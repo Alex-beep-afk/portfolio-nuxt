@@ -31,7 +31,10 @@ const form = reactive({
     url: '',
     media: [],
     technos: [],
-    coverImage: ''
+    coverImage: '',
+    type: '',
+    category: '',
+    favoritePosition: null
 })
 
 const postProject = async () => {
@@ -106,7 +109,10 @@ const postProject = async () => {
                 link: form.url,
                 gallery: mediaIds,
                 techno: form.technos,
-                coverImage: coverImageId
+                coverImage: coverImageId,
+                type: form.type,
+                category: form.category,
+                favoritePosition: form.favoritePosition ? parseInt(form.favoritePosition) : null
             }
         })
 
@@ -119,6 +125,9 @@ const postProject = async () => {
         form.media = [];
         form.technos = [];
         form.coverImage = '';
+        form.type = '';
+        form.category = '';
+        form.favoritePosition = null;
 
         if (coverImageRef.value || mediaRef.value){
             coverImageRef.value.value = '';
@@ -211,6 +220,64 @@ const handleCoverImageUpload = (event) => {
                     focus:shadow-[0_0_30px_-5px_rgba(59,130,246,0.75)]
                     transition-all duration-300 placeholder:text-gray-600 text-sm"
                 >
+            </div>
+        </div>
+
+        <!-- Type, Catégorie & Position Favori -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="flex flex-col gap-1">
+                <label for="type" class="text-white text-sm font-medium">Type</label>
+                <input
+                    type="text"
+                    id="type"
+                    name="type"
+                    placeholder="Ex: Web, Mobile"
+                    v-model="form.type"
+                    class="p-2.5 rounded-lg bg-black text-white border border-white/10 
+                    shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]
+                    hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.50)]
+                    focus:outline-none focus:ring-2 focus:ring-blue-400/80 focus:border-blue-400/40 
+                    focus:shadow-[0_0_30px_-5px_rgba(59,130,246,0.75)]
+                    transition-all duration-300 placeholder:text-gray-600 text-sm"
+                >
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="category" class="text-white text-sm font-medium">Catégorie</label>
+                <input
+                    type="text"
+                    id="category"
+                    name="category"
+                    placeholder="Ex: Perso, Pro"
+                    v-model="form.category"
+                    class="p-2.5 rounded-lg bg-black text-white border border-white/10 
+                    shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]
+                    hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.50)]
+                    focus:outline-none focus:ring-2 focus:ring-blue-400/80 focus:border-blue-400/40 
+                    focus:shadow-[0_0_30px_-5px_rgba(59,130,246,0.75)]
+                    transition-all duration-300 placeholder:text-gray-600 text-sm"
+                >
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="favoritePosition" class="text-white text-sm font-medium">Position Favori</label>
+                <select
+                    id="favoritePosition"
+                    name="favoritePosition"
+                    v-model="form.favoritePosition"
+                    class="p-2.5 rounded-lg bg-black text-white border border-white/10 
+                    shadow-[0_0_30px_-5px_rgba(59,130,246,0.25)]
+                    hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.50)]
+                    focus:outline-none focus:ring-2 focus:ring-blue-400/80 focus:border-blue-400/40 
+                    focus:shadow-[0_0_30px_-5px_rgba(59,130,246,0.75)]
+                    transition-all duration-300 text-sm cursor-pointer"
+                >
+                    <option :value="null">Aucune (Non favori)</option>
+                    <option :value="1">Position 1</option>
+                    <option :value="2">Position 2</option>
+                    <option :value="3">Position 3</option>
+                    <option :value="4">Position 4</option>
+                </select>
             </div>
         </div>
 

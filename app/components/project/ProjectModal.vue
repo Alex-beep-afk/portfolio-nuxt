@@ -110,9 +110,20 @@
 
                     <div class="border border-slate-400/30 mb-10 mt-10"></div>
 
-                    <div class="flex justify-between gap-10">
-                        <UiButtonPrimary label="Voir le projet en ligne" :to="project.link" class="text-center" :disabled="!project.link" :class="!project.link ? 'opacity-50 cursor-not-allowed' : ''"/>
-                        <UiButtonSecondary label="Voir le projet sur GitHub" :to="project.githubLink" class="text-center" :disabled="!project.githubLink" :class="!project.githubLink ? 'opacity-50 cursor-not-allowed' : ''"/>
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-10">
+                        <UiButtonPrimary 
+                            :label="!project.link ? 'Projet pas en ligne' : 'Voir le projet en ligne'" 
+                            :to="project.link" 
+                            class="text-center w-full sm:w-auto" 
+                            :disabled="!project.link" 
+                            :class="!project.link ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''"/>
+
+                        <UiButtonSecondary 
+                            :label="!project.githubLink ? 'Projet privé' : 'Voir le projet sur GitHub'"
+                            :to="project.githubLink" 
+                            class="text-center w-full sm:w-auto" 
+                            :disabled="!project.githubLink" 
+                            :class="!project.githubLink ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''"/>
                     </div>
 
                 </div>

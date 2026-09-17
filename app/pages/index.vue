@@ -2,9 +2,17 @@
 
 const config = useRuntimeConfig();
 
-//Appel Api pour les projets
-const { projects, fetchProjects } = useProjects();
-await fetchProjects();
+// Appel Api pour les projets favoris
+const { data: projectsData } = await useFetch(`${config.public.apiBaseUrl}/api/projects`, {
+  query: {
+    active: true,
+    'exists[favoritePosition]': true,
+    'order[favoritePosition]': 'asc'
+  },
+  headers: {
+    Accept: 'application/ld+json'
+  }
+})
 
 // Appel Api pour les technos 
 const { data: techData, error: techError } = await useFetch(`${config.public.apiBaseUrl}/api/technos?active=true`, {
@@ -16,7 +24,7 @@ const { data: techData, error: techError } = await useFetch(`${config.public.api
 
 
 const displayedProjects = computed(() => {
-  return projects.value.slice(0, 4)
+  return projectsData.value ? projectsData.value.member : []
 })
 
 const displayTechs = computed(() => {
