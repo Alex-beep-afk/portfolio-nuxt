@@ -9,6 +9,7 @@ const { data: projectsData } = await useFetch(`${config.public.apiBaseUrl}/api/p
     'exists[favoritePosition]': true,
     'order[favoritePosition]': 'asc'
   },
+  server: false,
   headers: {
     Accept: 'application/ld+json'
   }
