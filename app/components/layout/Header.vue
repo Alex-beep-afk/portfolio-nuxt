@@ -2,6 +2,7 @@
 
 const isMenuOpen = ref(false);
 const headerRef = ref(null) ;
+
 onClickOutside(headerRef, () => {
     isMenuOpen.value = false
 })
@@ -11,6 +12,7 @@ useEventListener('scroll', () => {
         isMenuOpen.value = false
     }
 }, { passive: true });
+
 </script>
 
 <template>
