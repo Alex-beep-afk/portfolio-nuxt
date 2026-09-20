@@ -120,8 +120,8 @@ const displayScrollbarOnScroll = computed(() => {
                         <!-- COntenu titre + features + description -->
                         <div class="p-8">
                             <div>
-                                <UiScrollReveal class="flex items-center justify-center">
-                                    <UiTerminalText :text="project.title" header="h2" :speed="100" :size="42" />
+                                <UiScrollReveal class="flex items-center justify-center pb-8">
+                                    <UiTerminalText :text="project.title" header="h2" :speed="75" :size="42" />
                                 </UiScrollReveal>
 
                                 <div v-if="project.features && project.features.length > 0" class="my-8">
